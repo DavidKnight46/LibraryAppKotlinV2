@@ -1,13 +1,10 @@
 package com.example.libraryserviceandroidv2.libraryservice.client
 
-import com.example.libraryserviceandroidv2.libraryservice.model.GameModel
+import com.example.libraryserviceandroidv2.libraryservice.model.games.GameModel
 
-class LibraryServiceClient {
+interface LibraryServiceClient {
 
-    fun foo():String{
-        var gameModel = GameModel("test", 1);
+    fun getAllGame():List<GameModel>
 
-        var name = gameModel.name;
-        return "";
-    }
+    fun getAGame(id: String)
 }
