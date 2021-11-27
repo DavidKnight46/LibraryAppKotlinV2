@@ -4,8 +4,12 @@ import org.apache.http.client.methods.HttpGet
 import org.apache.http.impl.client.HttpClients
 import java.net.URI
 import java.net.URISyntaxException
+import java.util.logging.Level
+import java.util.logging.Logger
 
 class UserClient {
+
+    var logger = Logger.getLogger("UserClient")
 
     fun checkUser(user: String, password: String): Boolean{
         callEndpoint(user, password)
@@ -27,7 +31,7 @@ class UserClient {
             }while(content.available() != 0)
 
         } catch (e: URISyntaxException){
-
+            logger.log(Level.SEVERE, "Unable to call endpoint")
         }
 
     }
