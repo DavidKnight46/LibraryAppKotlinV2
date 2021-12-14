@@ -31,8 +31,6 @@ class MainActivity : AppCompatActivity() {
         var userName = userNameTextView.text.toString()
         var password = passwordTextView.text.toString()
 
-        //userClient.checkUser(userName, password)
-
         if(userClient.checkUser(userName, password)) {
             var intent = Intent(this, PrimaryActivity::class.java)
 
