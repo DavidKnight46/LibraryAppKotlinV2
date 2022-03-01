@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:paddingHorizontal="@dimen/paddingHorizontal"
+    android:paddingVertical="@dimen/paddingVertical"
+    style="@style/activityStyle"
     app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
     <fragment
@@ -16,4 +20,48 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:navGraph="@navigation/nav_graph2" />
+
+    <Button
+        style="@style/myButtonStyle"
+        android:id="@+id/addButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/addGame"
+        tools:ignore="MissingConstraints"
+        android:paddingVertical="@dimen/paddingVertical"
+        />
+
+    <Button
+        style="@style/myButtonStyle"
+        android:id="@+id/viewButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingVertical="@dimen/paddingVertical"
+        android:stateListAnimator="@android:anim/fade_in"
+        android:text="@string/viewGame"
+        app:layout_constraintTop_toBottomOf="@id/addButton"
+        tools:layout_editor_absoluteX="25dp" />
+
+    <Button
+        style="@style/myButtonStyle"
+        android:id="@+id/editButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingVertical="@dimen/paddingVertical"
+        android:stateListAnimator="@android:anim/fade_in"
+        android:text="@string/editGame"
+        app:layout_constraintTop_toBottomOf="@id/viewButton"
+        tools:layout_editor_absoluteX="25dp" />
+
+    <Button
+        style="@style/myButtonStyle"
+        android:id="@+id/deleteButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingVertical="@dimen/paddingVertical"
+        android:stateListAnimator="@android:anim/fade_in"
+        android:text="@string/deleteGame"
+        app:layout_constraintTop_toBottomOf="@id/editButton"
+        tools:layout_editor_absoluteX="25dp" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

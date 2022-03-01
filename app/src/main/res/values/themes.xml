@@ -14,9 +14,20 @@
         <!-- Customize your theme here. -->
     </style>
 
+    <style name="activityStyle">
+        <item name="android:background">#CCB3E5FC</item>
+        <item name="android:foregroundTint">#BBDEFB</item>
+    </style>
+
     <style name="Theme.LIbraryServiceAndroidV2.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="myButtonStyle">
+        <item name="android:textColor">#E1BEE7</item>
+        <item name="android:backgroundTint">#F67575</item>
+        <item name="android:paddingTop">10dp</item>
     </style>
 
     <style name="Theme.LIbraryServiceAndroidV2.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
