@@ -1,4 +1,4 @@
-package com.example.libraryserviceandroidv2
+package com.example.libraryserviceandroidv2.libraryservice.activities
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity

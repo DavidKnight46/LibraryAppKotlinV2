@@ -10,11 +10,16 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.LIbraryServiceAndroidV2">
         <activity
-            android:name=".PrimaryActivity"
+            android:name=".libraryservice.activities.viewActivity"
+            android:exported="false"
+            android:label="@string/title_activity_view"
+            android:theme="@style/Theme.LIbraryServiceAndroidV2.NoActionBar" />
+        <activity
+            android:name=".libraryservice.activities.PrimaryActivity"
             android:exported="false"
             android:label="@string/title_activity_main2" />
         <activity
-            android:name=".MainActivity"
+            android:name=".libraryservice.activities.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

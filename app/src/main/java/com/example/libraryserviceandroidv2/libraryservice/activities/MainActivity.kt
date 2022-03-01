@@ -1,4 +1,4 @@
-package com.example.libraryserviceandroidv2
+package com.example.libraryserviceandroidv2.libraryservice.activities
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
+import com.example.libraryserviceandroidv2.R
 import com.example.libraryserviceandroidv2.libraryservice.client.user.UserClient
 
 class MainActivity : AppCompatActivity() {
@@ -32,7 +33,8 @@ class MainActivity : AppCompatActivity() {
         var password = passwordTextView.text.toString()
 
         if(userClient.checkUser(userName, password)) {
-            var intent = Intent(this, PrimaryActivity::class.java)
+            System.out.println("test");
+            var intent = Intent(this, viewActivity::class.java)
 
             startActivity(intent)
         }
