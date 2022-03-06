@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">LIbraryServiceAndroidV2</string>
+    <string name="app_name">My Game Collection</string>
     <string name="title_activity_main2">MainActivity2</string>
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
@@ -22,4 +22,10 @@
     <string name="loginButtonText">Login</string>
     <string name="hintPassword">Password:</string>
     <string name="hintUserName">Username:</string>
+    <string name="title_activity_add">AddActivity</string>
+
+    <string-array name="platforms">
+        <item>PS1</item>
+        <item>PS2</item>
+    </string-array>
 </resources>

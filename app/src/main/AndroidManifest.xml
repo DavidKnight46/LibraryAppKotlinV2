@@ -10,6 +10,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.LIbraryServiceAndroidV2">
         <activity
+            android:name=".AddActivity"
+            android:exported="false"
+            android:label="@string/title_activity_add"
+            android:theme="@style/Theme.LIbraryServiceAndroidV2.NoActionBar" />
+        <activity
             android:name=".libraryservice.activities.viewActivity"
             android:exported="false"
             android:label="@string/title_activity_view"

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/layoutMain"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,14 +8,28 @@
     style="@style/activityStyle"
     tools:context=".libraryservice.activities.MainActivity">
 
+    <ImageView
+        android:id="@+id/mainImage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="125dp"
+        android:layout_marginTop="75dp"
+        app:layout_constraintBottom_toTopOf="@+id/username"
+        app:layout_constraintTop_toTopOf="@+id/layoutMain"
+        android:layout_centerHorizontal="true"
+        app:srcCompat="@drawable/download"
+        android:layout_centerInParent="true"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"/>
+
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/username"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
-        android:layout_margin="4dp"
         android:hint="@string/hintUserName"
         android:paddingHorizontal="@dimen/paddingHorizontal"
+        app:layout_constraintTop_toBottomOf="@+id/mainImage"
         tools:ignore="MissingConstraints">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -42,6 +57,7 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
+        style="@style/myButtonStyle"
         android:id="@+id/loginButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

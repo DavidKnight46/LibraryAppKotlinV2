@@ -26,7 +26,7 @@
 
     <style name="myButtonStyle">
         <item name="android:textColor">#E1BEE7</item>
-        <item name="android:backgroundTint">#F67575</item>
+        <item name="android:backgroundTint">#2F5AF7</item>
         <item name="android:paddingTop">10dp</item>
     </style>
 
