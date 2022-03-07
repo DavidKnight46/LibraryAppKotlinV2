@@ -27,5 +27,8 @@
     <string-array name="platforms">
         <item>PS1</item>
         <item>PS2</item>
+        <item>PS3</item>
+        <item>PS4</item>
+        <item>PS5</item>
     </string-array>
 </resources>

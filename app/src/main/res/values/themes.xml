@@ -15,8 +15,8 @@
     </style>
 
     <style name="activityStyle">
-        <item name="android:background">#CCB3E5FC</item>
-        <item name="android:foregroundTint">#BBDEFB</item>
+        <item name="android:background">#FFFFFF</item>
+<!--        <item name="android:foregroundTint">#BBDEFB</item>-->
     </style>
 
     <style name="Theme.LIbraryServiceAndroidV2.NoActionBar">
