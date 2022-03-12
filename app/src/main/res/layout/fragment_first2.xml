@@ -100,12 +100,7 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
                     android:inputType="textUri"
-                    android:hint="Image URI
-
-
-
-
-                    :"
+                    android:hint="Image URI:"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/topPadding"
                     />
@@ -113,8 +108,8 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <Button
-                android:id="@+id/saveButton"
                 style="@style/myButtonStyle"
+                android:id="@+id/saveButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/addGame"

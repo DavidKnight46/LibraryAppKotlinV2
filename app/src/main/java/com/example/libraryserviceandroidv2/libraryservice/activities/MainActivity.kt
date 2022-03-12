@@ -11,34 +11,24 @@ import com.example.libraryserviceandroidv2.libraryservice.client.user.UserClient
 
 class MainActivity : AppCompatActivity() {
 
-//    lateinit var userNameTextView: EditText
-//    lateinit var passwordTextView: EditText
     lateinit var loginButton: Button
     lateinit var userClient: UserClient
+    lateinit var saveButton: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        //userNameTextView = findViewById(R.id.test)
-//        passwordTextView = findViewById(R.id.passwordTextField)
-
         loginButton =  findViewById(R.id.loginButton)
+        saveButton = findViewById(R.id.saveButton)
 
         userClient = UserClient()
     }
 
     fun testClick(view: View){
-//        var userName = userNameTextView.text.toString()
-//        var password = passwordTextView.text.toString()
-//
-//        if(userClient.checkUser(userName, password)) {
-            System.out.println("test");
             var intent = Intent(this, viewActivity::class.java)
 
             startActivity(intent)
-//        }
-
     }
 
 }
