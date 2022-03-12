@@ -31,4 +31,12 @@
         <item>PS4</item>
         <item>PS5</item>
     </string-array>
+
+    <string-array name="genre">
+        <item>Action/Adventure</item>
+        <item>RPG</item>
+        <item>FPS</item>
+        <item>Fighting</item>
+        <item>RTS</item>
+    </string-array>
 </resources>
