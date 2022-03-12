@@ -1,12 +1,14 @@
-package com.example.libraryserviceandroidv2
+package com.example.libraryserviceandroidv2.libraryservice.activities
 
 import android.os.Bundle
+import android.view.View
 import com.google.android.material.snackbar.Snackbar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
+import com.example.libraryserviceandroidv2.R
 import com.example.libraryserviceandroidv2.databinding.ActivityAddBinding
 
 class AddActivity : AppCompatActivity() {
@@ -36,5 +38,9 @@ class AddActivity : AppCompatActivity() {
         val navController = findNavController(R.id.nav_host_fragment_content_add)
         return navController.navigateUp(appBarConfiguration)
                 || super.onSupportNavigateUp()
+    }
+
+    fun saveOnClick1(view: View){
+        System.out.println("smurf")
     }
 }

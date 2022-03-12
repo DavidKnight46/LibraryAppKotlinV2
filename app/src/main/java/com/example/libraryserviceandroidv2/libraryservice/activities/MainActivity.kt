@@ -13,14 +13,12 @@ class MainActivity : AppCompatActivity() {
 
     lateinit var loginButton: Button
     lateinit var userClient: UserClient
-    lateinit var saveButton: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
         loginButton =  findViewById(R.id.loginButton)
-        saveButton = findViewById(R.id.saveButton)
 
         userClient = UserClient()
     }
@@ -29,6 +27,10 @@ class MainActivity : AppCompatActivity() {
             var intent = Intent(this, viewActivity::class.java)
 
             startActivity(intent)
+    }
+
+    fun saveOnClick(view: View){
+        System.out.println("smurf")
     }
 
 }

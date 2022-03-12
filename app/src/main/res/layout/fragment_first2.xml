@@ -26,6 +26,7 @@
                 tools:ignore="MissingConstraints">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/usernameInput"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/topPadding" />
@@ -76,16 +77,16 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingHorizontal="@dimen/paddingHorizontal"
-                tools:ignore="MissingConstraints"
-                app:layout_constraintTop_toBottomOf="@+id/ratingBar">
+                app:layout_constraintTop_toBottomOf="@+id/ratingBar"
+                tools:ignore="MissingConstraints">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/releaseDateInput"
                     android:layout_width="match_parent"
-                    android:inputType="date"
-                    android:hint="Release Date (DD/MM/YYYY)"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/topPadding"
-                    />
+                    android:hint="Release Date (DD/MM/YYYY)"
+                    android:inputType="date" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -94,26 +95,27 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingHorizontal="@dimen/paddingHorizontal"
-                tools:ignore="MissingConstraints"
-                app:layout_constraintTop_toBottomOf="@+id/releaseDate">
+                app:layout_constraintTop_toBottomOf="@+id/releaseDate"
+                tools:ignore="MissingConstraints">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/imageUrlInput"
                     android:layout_width="match_parent"
-                    android:inputType="textUri"
-                    android:hint="Image URI:"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/topPadding"
-                    />
+                    android:hint="Image URI:"
+                    android:inputType="textUri" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
             <Button
-                style="@style/myButtonStyle"
                 android:id="@+id/saveButton"
+                style="@style/myButtonStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/addGame"
+                android:onClick="saveOnClick1"
                 android:padding="10dp"
+                android:text="@string/addGame"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/imageUrl" />

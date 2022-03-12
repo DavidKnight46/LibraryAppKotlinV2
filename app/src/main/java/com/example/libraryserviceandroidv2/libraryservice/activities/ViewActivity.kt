@@ -3,16 +3,14 @@ package com.example.libraryserviceandroidv2.libraryservice.activities
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
-import android.widget.Button
-import com.google.android.material.snackbar.Snackbar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
-import com.example.libraryserviceandroidv2.AddActivity
 import com.example.libraryserviceandroidv2.R
 import com.example.libraryserviceandroidv2.databinding.ActivityViewBinding
+import com.google.android.material.snackbar.Snackbar
 
 class viewActivity : AppCompatActivity() {
 

@@ -1,26 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/layoutMain"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/layoutMain"
+    style="@style/activityStyle"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    style="@style/activityStyle"
     tools:context=".libraryservice.activities.MainActivity">
 
     <ImageView
         android:id="@+id/mainImage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_centerHorizontal="true"
         android:layout_marginHorizontal="125dp"
         android:layout_marginTop="@dimen/topPadding"
         app:layout_constraintBottom_toTopOf="@+id/username"
-        app:layout_constraintTop_toTopOf="@+id/layoutMain"
-        android:layout_centerHorizontal="true"
-        app:srcCompat="@drawable/download"
-        android:layout_centerInParent="true"
+        app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"/>
+        app:layout_constraintTop_toTopOf="@+id/layoutMain"
+        app:srcCompat="@drawable/download" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/username"
@@ -42,31 +42,31 @@
         android:id="@+id/password"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
         android:layout_margin="4dp"
+        android:layout_marginTop="40dp"
         android:hint="@string/hintPassword"
         android:paddingHorizontal="@dimen/paddingHorizontal"
         app:layout_constraintTop_toBottomOf="@id/username"
         tools:ignore="MissingConstraints">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:inputType="textPassword"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:inputType="textPassword" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
-        style="@style/myButtonStyle"
         android:id="@+id/loginButton"
+        style="@style/myButtonStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:text="@string/loginButtonText"
         android:onClick="testClick"
         android:paddingHorizontal="@dimen/paddingVertical"
+        android:text="@string/loginButtonText"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/password"/>
+        app:layout_constraintTop_toBottomOf="@+id/password" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
