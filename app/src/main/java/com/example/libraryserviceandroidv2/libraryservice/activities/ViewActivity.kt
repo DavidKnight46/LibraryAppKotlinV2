@@ -47,8 +47,4 @@ class viewActivity : AppCompatActivity() {
         startActivity(intent)
     }
 
-    fun testF(view: View){
-        System.out.println("smurf")
-    }
-
 }

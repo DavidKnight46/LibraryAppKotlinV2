@@ -26,6 +26,7 @@ class SecondFragment : Fragment() {
     ): View? {
 
         _binding = FragmentSecondBinding.inflate(inflater, container, false)
+
         return binding.root
 
     }

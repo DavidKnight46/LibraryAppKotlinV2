@@ -40,7 +40,4 @@ class AddActivity : AppCompatActivity() {
                 || super.onSupportNavigateUp()
     }
 
-    fun saveOnClick1(view: View){
-        System.out.println("smurf")
-    }
 }

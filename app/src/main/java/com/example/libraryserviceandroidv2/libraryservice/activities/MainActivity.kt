@@ -29,8 +29,4 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
     }
 
-    fun saveOnClick(view: View){
-        System.out.println("smurf")
-    }
-
 }

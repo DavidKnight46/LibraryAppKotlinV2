@@ -9,8 +9,8 @@ import com.example.libraryserviceandroidv2.libraryservice.database.entity.GameEn
 interface GameDAO {
 
     @Query("SELECT * FROM gameentity")
-    fun getAll(): List<GameEntity>
+    suspend fun getAll(): List<GameEntity>
 
     @Insert
-    fun insertAll(vararg users: GameEntity)
+    suspend fun insertAll(vararg users: GameEntity)
 }
