@@ -6,12 +6,13 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
-import androidx.room.Room
 import com.example.libraryserviceandroidv2.databinding.FragmentFirst2Binding
 import com.example.libraryserviceandroidv2.libraryservice.adapters.GenreSpinnerAdapter
 import com.example.libraryserviceandroidv2.libraryservice.adapters.PlatformSpinnerAdapter
 import com.example.libraryserviceandroidv2.libraryservice.database.AppDatabase
+import com.example.libraryserviceandroidv2.libraryservice.database.MyDataBaseBuilder
 import com.example.libraryserviceandroidv2.libraryservice.database.entity.GameEntity
+import kotlinx.coroutines.launch
 
 /**
  * A simple [Fragment] subclass as the default destination in the navigation.
@@ -33,11 +34,7 @@ class First2Fragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-        appDatabase = Room.databaseBuilder(
-            requireContext(),
-            AppDatabase::class.java,
-            "games"
-        ).build()
+        appDatabase = MyDataBaseBuilder.getInstance(requireContext());
 
         genreSpinnerAdapter = GenreSpinnerAdapter()
         platformSpinnerAdapter = PlatformSpinnerAdapter()
@@ -54,16 +51,18 @@ class First2Fragment : Fragment() {
         binding.genreSpinner.onItemSelectedListener = genreSpinnerAdapter
         binding.platFormSpinner.onItemSelectedListener = platformSpinnerAdapter
 
-        var gameEntity : GameEntity
+        var gameEntity: GameEntity
 
         binding.saveButton.setOnClickListener {
-            gameEntity = GameEntity(1,
+            gameEntity = GameEntity(
+                0,
                 binding.gameNameInput.text.toString(),
                 genreSpinnerAdapter.getGenreName(),
                 platformSpinnerAdapter.getPlatformName(),
                 binding.ratingBar.rating,
                 binding.releaseDateInput.text.toString(),
-                binding.imageUrlInput.text.toString())
+                binding.imageUrlInput.text.toString()
+            )
 
             saveToDatabase(gameEntity)
         }
@@ -75,7 +74,7 @@ class First2Fragment : Fragment() {
     }
 
     private fun saveToDatabase(gameEntity: GameEntity){
-        lifecycleScope.launchWhenStarted {
+        lifecycleScope.launch {
             appDatabase.gameDao().insertAll(gameEntity)
         }
     }

@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
-import android.widget.EditText
 import com.example.libraryserviceandroidv2.R
 import com.example.libraryserviceandroidv2.libraryservice.client.user.UserClient
 

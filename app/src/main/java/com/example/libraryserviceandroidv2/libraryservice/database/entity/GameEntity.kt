@@ -6,7 +6,7 @@ import androidx.room.PrimaryKey
 import java.time.LocalDate
 
 @Entity
-data class GameEntity(@PrimaryKey val id: Int,
+data class GameEntity(@PrimaryKey(autoGenerate = true) val id: Int,
                       @ColumnInfo(name = "game_name") val gameName: String,
                       @ColumnInfo(name = "game_genre") val gameGenre: String,
                       @ColumnInfo(name = "game_platform") val gamePlatform: String,
