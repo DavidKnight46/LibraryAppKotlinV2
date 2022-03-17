@@ -8,6 +8,7 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
+import com.example.libraryserviceandroidv2.EditActivity
 import com.example.libraryserviceandroidv2.R
 import com.example.libraryserviceandroidv2.databinding.ActivityViewBinding
 import com.google.android.material.snackbar.Snackbar
@@ -47,4 +48,9 @@ class viewActivity : AppCompatActivity() {
         startActivity(intent)
     }
 
+    fun onEditCLick(view: View){
+        var intent = Intent(this, EditActivity::class.java)
+
+        startActivity(intent)
+    }
 }

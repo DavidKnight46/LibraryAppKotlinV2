@@ -12,4 +12,8 @@ data class GameEntity(@PrimaryKey(autoGenerate = true) val id: Int,
                       @ColumnInfo(name = "game_platform") val gamePlatform: String,
                       @ColumnInfo(name = "game_rating") val rating: Float,
                       @ColumnInfo(name = "release_date") val releaseDate: String,
-                      @ColumnInfo(name = "image_url") val imageUri: String)
+                      @ColumnInfo(name = "image_url") val imageUri: String){
+    override fun toString(): String {
+        return "GameEntity(gameName='$gameName')"
+    }
+}
