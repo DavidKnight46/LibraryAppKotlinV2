@@ -36,7 +36,8 @@ class EditActivity : AppCompatActivity() {
                     binding.fragmentViewContainer.findViewById(R.id.gameNameInput),
                     binding.fragmentViewContainer.findViewById(R.id.releaseDateInput),
                     binding.fragmentViewContainer.findViewById(R.id.imageUrlInput),
-                    binding.fragmentViewContainer.findViewById(R.id.saveButton)
+                    binding.fragmentViewContainer.findViewById(R.id.saveButton),
+                    binding.fragmentViewContainer.findViewById(R.id.ratingBar)
                 )
         }
     }
