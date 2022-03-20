@@ -41,7 +41,8 @@
         android:stateListAnimator="@android:anim/fade_in"
         android:text="@string/viewGame"
         app:layout_constraintTop_toBottomOf="@id/addButton"
-        tools:layout_editor_absoluteX="25dp" />
+        tools:layout_editor_absoluteX="25dp"
+        android:onClick="onViewCLick"/>
 
     <Button
         style="@style/myButtonStyle"
@@ -55,16 +56,5 @@
         tools:layout_editor_absoluteX="25dp"
         android:onClick="onEditCLick"
         />
-
-    <Button
-        style="@style/myButtonStyle"
-        android:id="@+id/deleteButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingVertical="@dimen/paddingVertical"
-        android:stateListAnimator="@android:anim/fade_in"
-        android:text="@string/deleteGame"
-        app:layout_constraintTop_toBottomOf="@id/editButton"
-        tools:layout_editor_absoluteX="25dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
