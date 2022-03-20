@@ -14,6 +14,6 @@ data class GameEntity(@PrimaryKey(autoGenerate = true) val id: Int,
                       @ColumnInfo(name = "release_date") val releaseDate: String,
                       @ColumnInfo(name = "image_url") val imageUri: String){
     override fun toString(): String {
-        return "GameEntity(gameName='$gameName')"
+        return gameName
     }
 }
