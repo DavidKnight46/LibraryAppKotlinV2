@@ -1,6 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/cardviewviewlayout"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cardviewitemlayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/gameNameText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="test1"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toRightOf="@+id/gameimage"
+            />
+
+        <TextView
+            android:id="@+id/gamePlatformText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/gameNameText"
+            app:layout_constraintLeft_toRightOf="@+id/gameimage"
+            android:text="test2"/>
+
+        <TextView
+            android:id="@+id/gameGenreText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/gamePlatformText"
+            app:layout_constraintLeft_toRightOf="@+id/gameimage"
+            android:text="test3"/>
+
+        <TextView
+            android:id="@+id/gameReleaseDateText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="test4"
+            app:layout_constraintBottom_toBottomOf="@+id/gameimage"
+            app:layout_constraintLeft_toRightOf="@+id/gameimage"
+            />
+
+        <ImageView
+            android:id="@+id/gameimage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/download"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.cardview.widget.CardView>
