@@ -7,8 +7,8 @@ import java.time.LocalDate
 
 @Entity
 data class GameEntity(@PrimaryKey(autoGenerate = true) val id: Int,
-                      @ColumnInfo(name = "game_name") val gameName: String,
-                      @ColumnInfo(name = "game_genre") val gameGenre: String,
+                      @ColumnInfo(name = "game_name") var gameName: String,
+                      @ColumnInfo(name = "game_genre") var gameGenre: String,
                       @ColumnInfo(name = "game_platform") val gamePlatform: String,
                       @ColumnInfo(name = "game_rating") val rating: Float,
                       @ColumnInfo(name = "release_date") val releaseDate: String,

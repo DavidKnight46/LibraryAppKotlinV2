@@ -119,6 +119,17 @@
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/imageUrl" />
 
+            <Button
+                android:id="@+id/delete"
+                style="@style/myButtonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:text="@string/deleteGame"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/saveButton" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </ScrollView>

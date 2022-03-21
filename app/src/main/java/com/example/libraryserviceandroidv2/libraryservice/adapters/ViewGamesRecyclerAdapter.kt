@@ -21,8 +21,14 @@ class ViewGamesRecyclerAdapter(val userList: List<GameEntity>) : RecyclerView.Ad
 
     override fun onBindViewHolder(p0: ViewHolder, p1: Int) {
         var iGameText = p0.itemView.findViewById<TextView>(R.id.gameNameText)
+        var iGamePlatform = p0.itemView.findViewById<TextView>(R.id.gamePlatformText)
+        var iGameGenre = p0.itemView.findViewById<TextView>(R.id.gameGenreText)
+        var iGameReleaseDate = p0.itemView.findViewById<TextView>(R.id.gameReleaseDateText)
 
         iGameText.setText(userList[p1].gameName)
+        iGamePlatform.setText(userList[p1].gamePlatform)
+        iGameGenre.setText(userList[p1].gameGenre)
+        iGameReleaseDate.setText(userList[p1].releaseDate)
     }
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {

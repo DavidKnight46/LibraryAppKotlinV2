@@ -32,6 +32,10 @@ class EditGameAdapter(
 
     }
 
+    fun getGame(): GameEntity{
+        return itemAtPosition
+    }
+
     private fun setFields() {
         gameName.setText(itemAtPosition.gameName)
         releaseDate.setText(itemAtPosition.releaseDate)
