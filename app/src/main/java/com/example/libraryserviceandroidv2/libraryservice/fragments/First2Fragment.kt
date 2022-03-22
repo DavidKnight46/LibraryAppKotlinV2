@@ -57,7 +57,7 @@ class First2Fragment : Fragment() {
                 0,
                 binding.gameNameInput.text.toString(),
                 genreSpinnerAdapter.getGenreName(),
-                platformSpinnerAdapter.getPlatformName(),
+                "platformSpinnerAdapter.getPlatformName()",
                 binding.ratingBar.rating,
                 binding.releaseDateInput.text.toString(),
                 binding.imageUrlInput.text.toString()
