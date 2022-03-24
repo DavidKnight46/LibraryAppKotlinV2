@@ -4,11 +4,14 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import com.example.libraryserviceandroidv2.databinding.FragmentFirst2Binding
 import com.example.libraryserviceandroidv2.libraryservice.adapters.GenreSpinnerAdapter
 import com.example.libraryserviceandroidv2.libraryservice.adapters.PlatformSpinnerAdapter
+import com.example.libraryserviceandroidv2.libraryservice.adapters.gameobjects.GenreText
+import com.example.libraryserviceandroidv2.libraryservice.adapters.gameobjects.PlatformText
 import com.example.libraryserviceandroidv2.libraryservice.database.AppDatabase
 import com.example.libraryserviceandroidv2.libraryservice.database.MyDataBaseBuilder
 import com.example.libraryserviceandroidv2.libraryservice.database.entity.GameEntity
@@ -56,8 +59,8 @@ class First2Fragment : Fragment() {
             gameEntity = GameEntity(
                 0,
                 binding.gameNameInput.text.toString(),
-                genreSpinnerAdapter.getGenreName(),
-                "platformSpinnerAdapter.getPlatformName()",
+                GenreText.getGenre(),
+                PlatformText.getPlatform(),
                 binding.ratingBar.rating,
                 binding.releaseDateInput.text.toString(),
                 binding.imageUrlInput.text.toString()

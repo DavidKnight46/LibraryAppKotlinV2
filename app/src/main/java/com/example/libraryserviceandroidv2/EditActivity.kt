@@ -3,6 +3,7 @@ package com.example.libraryserviceandroidv2
 import android.os.Bundle
 import android.widget.ArrayAdapter
 import android.widget.Button
+import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import com.example.libraryserviceandroidv2.databinding.LayouteditactivityBinding
@@ -12,6 +13,7 @@ import com.example.libraryserviceandroidv2.libraryservice.adapters.gameobjects.P
 import com.example.libraryserviceandroidv2.libraryservice.database.AppDatabase
 import com.example.libraryserviceandroidv2.libraryservice.database.MyDataBaseBuilder
 import com.google.android.material.textfield.TextInputEditText
+import com.squareup.picasso.Picasso
 import kotlinx.coroutines.launch
 
 class EditActivity : AppCompatActivity() {
@@ -41,7 +43,9 @@ class EditActivity : AppCompatActivity() {
                     binding.fragmentViewContainer.findViewById(R.id.releaseDateInput),
                     binding.fragmentViewContainer.findViewById(R.id.imageUrlInput),
                     binding.fragmentViewContainer.findViewById(R.id.saveButton),
-                    binding.fragmentViewContainer.findViewById(R.id.ratingBar)
+                    binding.fragmentViewContainer.findViewById(R.id.ratingBar),
+                    binding.fragmentViewContainer.findViewById(R.id.platFormSpinner),
+                    binding.fragmentViewContainer.findViewById(R.id.genreSpinner)
                 )
 
             binding.gamesToEdit.onItemSelectedListener = editGameAdapter

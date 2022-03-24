@@ -16,7 +16,4 @@ class GenreSpinnerAdapter() : AdapterView.OnItemSelectedListener {
         System.out.println("smurf4")
     }
 
-    fun getGenreName(): String{
-        return itemAtPosition
-    }
 }
