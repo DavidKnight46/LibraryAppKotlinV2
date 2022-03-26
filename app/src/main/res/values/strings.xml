@@ -23,6 +23,7 @@
     <string name="hintPassword">Password:</string>
     <string name="hintUserName">Username:</string>
     <string name="title_activity_add">AddActivity</string>
+    <string name="imageViewerContentDis">Game Image</string>
 
     <string-array name="platforms">
         <item>PS1</item>
@@ -30,6 +31,8 @@
         <item>PS3</item>
         <item>PS4</item>
         <item>PS5</item>
+        <item>PSP</item>
+        <item>PSVita</item>
     </string-array>
 
     <string-array name="genre">

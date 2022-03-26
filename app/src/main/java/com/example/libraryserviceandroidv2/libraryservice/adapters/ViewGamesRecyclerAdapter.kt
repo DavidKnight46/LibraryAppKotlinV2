@@ -3,10 +3,12 @@ package com.example.libraryserviceandroidv2.libraryservice.adapters
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.libraryserviceandroidv2.R
 import com.example.libraryserviceandroidv2.libraryservice.database.entity.GameEntity
+import com.squareup.picasso.Picasso
 
 class ViewGamesRecyclerAdapter(val userList: List<GameEntity>) : RecyclerView.Adapter<ViewGamesRecyclerAdapter.ViewHolder>() {
 
@@ -29,6 +31,16 @@ class ViewGamesRecyclerAdapter(val userList: List<GameEntity>) : RecyclerView.Ad
         iGamePlatform.setText(userList[p1].gamePlatform)
         iGameGenre.setText(userList[p1].gameGenre)
         iGameReleaseDate.setText(userList[p1].releaseDate)
+
+        var s = userList[p1].imageUri
+
+        Picasso
+            .get()
+            .load(userList[p1].imageUri)
+            .placeholder(R.drawable.download)
+            .resize(500,500)
+            .into(p0.itemView.findViewById<ImageView>(R.id.gameimage))
+
     }
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
