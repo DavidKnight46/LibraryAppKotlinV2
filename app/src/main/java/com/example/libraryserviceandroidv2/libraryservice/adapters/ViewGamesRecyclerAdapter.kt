@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.RatingBar
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.libraryserviceandroidv2.R
@@ -26,17 +27,19 @@ class ViewGamesRecyclerAdapter(val userList: List<GameEntity>) : RecyclerView.Ad
         var iGamePlatform = p0.itemView.findViewById<TextView>(R.id.gamePlatformText)
         var iGameGenre = p0.itemView.findViewById<TextView>(R.id.gameGenreText)
         var iGameReleaseDate = p0.itemView.findViewById<TextView>(R.id.gameReleaseDateText)
+        var iGameRatingBar = p0.itemView.findViewById<RatingBar>(R.id.ratingBarCard)
 
         iGameText.setText(userList[p1].gameName)
         iGamePlatform.setText(userList[p1].gamePlatform)
         iGameGenre.setText(userList[p1].gameGenre)
         iGameReleaseDate.setText(userList[p1].releaseDate)
+        iGameRatingBar.rating = userList[p1].rating
 
         Picasso
             .get()
             .load(userList[p1].imageUri)
             .placeholder(R.drawable.download)
-            .resize(500,500)
+            .resize(450,450)
             .into(p0.itemView.findViewById<ImageView>(R.id.gameimage))
 
     }
