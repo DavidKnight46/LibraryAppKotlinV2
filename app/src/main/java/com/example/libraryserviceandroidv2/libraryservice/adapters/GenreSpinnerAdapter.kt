@@ -2,7 +2,7 @@ package com.example.libraryserviceandroidv2.libraryservice.adapters
 
 import android.view.View
 import android.widget.AdapterView
-import com.example.libraryserviceandroidv2.libraryservice.adapters.gameobjects.GenreText
+import com.example.libraryserviceandroidv2.libraryservice.gameobjects.GenreText
 
 class GenreSpinnerAdapter() : AdapterView.OnItemSelectedListener {
     private lateinit var itemAtPosition : String

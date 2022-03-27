@@ -12,6 +12,7 @@ import com.example.libraryserviceandroidv2.EditActivity
 import com.example.libraryserviceandroidv2.R
 import com.example.libraryserviceandroidv2.ViewActivity
 import com.example.libraryserviceandroidv2.databinding.ActivityViewBinding
+import com.example.libraryserviceandroidv2.libraryservice.gameobjects.IsAdded
 import com.google.android.material.snackbar.Snackbar
 
 class viewActivity : AppCompatActivity() {
@@ -46,11 +47,15 @@ class viewActivity : AppCompatActivity() {
     fun onAddClick(view: View){
         var intent = Intent(this, AddActivity::class.java)
 
+        IsAdded.setIsAdded(true)
+
         startActivity(intent)
     }
 
     fun onEditCLick(view: View){
         var intent = Intent(this, EditActivity::class.java)
+
+        IsAdded.setIsAdded(false)
 
         startActivity(intent)
     }

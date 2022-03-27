@@ -2,7 +2,7 @@ package com.example.libraryserviceandroidv2.libraryservice.adapters
 
 import android.view.View
 import android.widget.AdapterView
-import com.example.libraryserviceandroidv2.libraryservice.adapters.gameobjects.PlatformText
+import com.example.libraryserviceandroidv2.libraryservice.gameobjects.PlatformText
 
 class PlatformSpinnerAdapter() : AdapterView.OnItemSelectedListener {
     lateinit var itemAtPosition : String

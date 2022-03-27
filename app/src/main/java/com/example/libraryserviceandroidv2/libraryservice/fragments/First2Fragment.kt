@@ -10,11 +10,12 @@ import androidx.lifecycle.lifecycleScope
 import com.example.libraryserviceandroidv2.databinding.FragmentFirst2Binding
 import com.example.libraryserviceandroidv2.libraryservice.adapters.GenreSpinnerAdapter
 import com.example.libraryserviceandroidv2.libraryservice.adapters.PlatformSpinnerAdapter
-import com.example.libraryserviceandroidv2.libraryservice.adapters.gameobjects.GenreText
-import com.example.libraryserviceandroidv2.libraryservice.adapters.gameobjects.PlatformText
+import com.example.libraryserviceandroidv2.libraryservice.gameobjects.GenreText
+import com.example.libraryserviceandroidv2.libraryservice.gameobjects.PlatformText
 import com.example.libraryserviceandroidv2.libraryservice.database.AppDatabase
 import com.example.libraryserviceandroidv2.libraryservice.database.MyDataBaseBuilder
 import com.example.libraryserviceandroidv2.libraryservice.database.entity.GameEntity
+import com.example.libraryserviceandroidv2.libraryservice.gameobjects.IsAdded
 import kotlinx.coroutines.launch
 
 /**
@@ -49,6 +50,8 @@ class First2Fragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        binding.delete.isVisible = !IsAdded.getIsAdded()
 
         binding.genreSpinner.onItemSelectedListener = genreSpinnerAdapter
         binding.platFormSpinner.onItemSelectedListener = platformSpinnerAdapter

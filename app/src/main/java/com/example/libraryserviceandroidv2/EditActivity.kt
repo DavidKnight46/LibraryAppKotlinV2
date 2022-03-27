@@ -3,17 +3,15 @@ package com.example.libraryserviceandroidv2
 import android.os.Bundle
 import android.widget.ArrayAdapter
 import android.widget.Button
-import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import com.example.libraryserviceandroidv2.databinding.LayouteditactivityBinding
 import com.example.libraryserviceandroidv2.libraryservice.adapters.EditGameAdapter
-import com.example.libraryserviceandroidv2.libraryservice.adapters.gameobjects.GenreText
-import com.example.libraryserviceandroidv2.libraryservice.adapters.gameobjects.PlatformText
+import com.example.libraryserviceandroidv2.libraryservice.gameobjects.GenreText
+import com.example.libraryserviceandroidv2.libraryservice.gameobjects.PlatformText
 import com.example.libraryserviceandroidv2.libraryservice.database.AppDatabase
 import com.example.libraryserviceandroidv2.libraryservice.database.MyDataBaseBuilder
 import com.google.android.material.textfield.TextInputEditText
-import com.squareup.picasso.Picasso
 import kotlinx.coroutines.launch
 
 class EditActivity : AppCompatActivity() {

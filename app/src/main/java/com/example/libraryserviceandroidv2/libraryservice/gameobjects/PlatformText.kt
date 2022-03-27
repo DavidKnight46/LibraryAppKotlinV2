@@ -1,4 +1,4 @@
-package com.example.libraryserviceandroidv2.libraryservice.adapters.gameobjects
+package com.example.libraryserviceandroidv2.libraryservice.gameobjects
 
 object PlatformText {
 
