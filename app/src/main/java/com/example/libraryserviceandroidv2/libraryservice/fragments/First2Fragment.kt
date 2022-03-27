@@ -1,14 +1,17 @@
 package com.example.libraryserviceandroidv2.libraryservice.fragments
 
+import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.annotation.RequiresApi
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import com.example.libraryserviceandroidv2.databinding.FragmentFirst2Binding
 import com.example.libraryserviceandroidv2.libraryservice.adapters.GenreSpinnerAdapter
+import com.example.libraryserviceandroidv2.libraryservice.adapters.ImageUrlContentListener
 import com.example.libraryserviceandroidv2.libraryservice.adapters.PlatformSpinnerAdapter
 import com.example.libraryserviceandroidv2.libraryservice.gameobjects.GenreText
 import com.example.libraryserviceandroidv2.libraryservice.gameobjects.PlatformText
@@ -48,6 +51,7 @@ class First2Fragment : Fragment() {
         return binding.root
     }
 
+    @RequiresApi(Build.VERSION_CODES.S)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -57,6 +61,8 @@ class First2Fragment : Fragment() {
         binding.platFormSpinner.onItemSelectedListener = platformSpinnerAdapter
 
         var gameEntity: GameEntity
+
+        binding.imageUrlInput.setOnReceiveContentListener(null, ImageUrlContentListener())
 
         binding.saveButton.setOnClickListener {
             gameEntity = GameEntity(

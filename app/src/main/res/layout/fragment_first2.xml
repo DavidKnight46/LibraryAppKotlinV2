@@ -134,7 +134,7 @@
                 android:id="@+id/image"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:contentDescription="Game Image"
+                android:contentDescription="@string/imageViewerContentDis"
                 app:layout_constraintTop_toBottomOf="@+id/delete"/>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
