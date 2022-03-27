@@ -1,8 +1,9 @@
 package com.example.libraryserviceandroidv2.libraryservice.activities
 
+import android.annotation.SuppressLint
+import android.os.Build
 import android.os.Bundle
-import android.view.View
-import com.google.android.material.snackbar.Snackbar
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
@@ -10,12 +11,18 @@ import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import com.example.libraryserviceandroidv2.R
 import com.example.libraryserviceandroidv2.databinding.ActivityAddBinding
+import com.example.libraryserviceandroidv2.libraryservice.adapters.ImageUrlContentListener
+import com.google.android.material.internal.ContextUtils.getActivity
+import com.google.android.material.snackbar.Snackbar
+import com.google.android.material.textfield.TextInputEditText
 
 class AddActivity : AppCompatActivity() {
 
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var binding: ActivityAddBinding
 
+    @SuppressLint("RestrictedApi")
+    @RequiresApi(Build.VERSION_CODES.S)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 

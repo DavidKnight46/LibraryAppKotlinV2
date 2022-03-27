@@ -1,9 +1,11 @@
 package com.example.libraryserviceandroidv2
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.widget.ArrayAdapter
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.lifecycle.lifecycleScope
 import com.example.libraryserviceandroidv2.databinding.LayouteditactivityBinding
 import com.example.libraryserviceandroidv2.libraryservice.adapters.EditGameAdapter
@@ -11,6 +13,7 @@ import com.example.libraryserviceandroidv2.libraryservice.gameobjects.GenreText
 import com.example.libraryserviceandroidv2.libraryservice.gameobjects.PlatformText
 import com.example.libraryserviceandroidv2.libraryservice.database.AppDatabase
 import com.example.libraryserviceandroidv2.libraryservice.database.MyDataBaseBuilder
+import com.google.android.material.internal.ContextUtils.getActivity
 import com.google.android.material.textfield.TextInputEditText
 import kotlinx.coroutines.launch
 
@@ -18,6 +21,7 @@ class EditActivity : AppCompatActivity() {
     private lateinit var appDatabase: AppDatabase
     private lateinit var binding: LayouteditactivityBinding
 
+    @SuppressLint("RestrictedApi")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 

@@ -32,8 +32,6 @@ class ViewGamesRecyclerAdapter(val userList: List<GameEntity>) : RecyclerView.Ad
         iGameGenre.setText(userList[p1].gameGenre)
         iGameReleaseDate.setText(userList[p1].releaseDate)
 
-        var s = userList[p1].imageUri
-
         Picasso
             .get()
             .load(userList[p1].imageUri)

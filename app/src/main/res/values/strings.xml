@@ -6,7 +6,7 @@
     <string name="title_notifications">Notifications</string>
     <string name="title_activity_view">viewActivity</string>
     <!-- Strings used for fragments for navigation -->
-    <string name="first_fragment_label">First Fragment</string>
+    <string name="first_fragment_label">Main Menu</string>
     <string name="second_fragment_label">Second Fragment</string>
     <string name="next">Next</string>
     <string name="previous">Previous</string>
@@ -24,6 +24,9 @@
     <string name="hintUserName">Username:</string>
     <string name="title_activity_add">AddActivity</string>
     <string name="imageViewerContentDis">Game Image</string>
+
+    <string name="editTitle">Edit/Delete Game</string>
+    <string name="altLoginButtonText">Enter</string>
 
     <string-array name="platforms">
         <item>PS1</item>

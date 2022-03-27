@@ -9,16 +9,16 @@ import androidx.annotation.RequiresApi
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
+import com.example.libraryserviceandroidv2.R
 import com.example.libraryserviceandroidv2.databinding.FragmentFirst2Binding
 import com.example.libraryserviceandroidv2.libraryservice.adapters.GenreSpinnerAdapter
-import com.example.libraryserviceandroidv2.libraryservice.adapters.ImageUrlContentListener
 import com.example.libraryserviceandroidv2.libraryservice.adapters.PlatformSpinnerAdapter
-import com.example.libraryserviceandroidv2.libraryservice.gameobjects.GenreText
-import com.example.libraryserviceandroidv2.libraryservice.gameobjects.PlatformText
 import com.example.libraryserviceandroidv2.libraryservice.database.AppDatabase
 import com.example.libraryserviceandroidv2.libraryservice.database.MyDataBaseBuilder
 import com.example.libraryserviceandroidv2.libraryservice.database.entity.GameEntity
+import com.example.libraryserviceandroidv2.libraryservice.gameobjects.GenreText
 import com.example.libraryserviceandroidv2.libraryservice.gameobjects.IsAdded
+import com.example.libraryserviceandroidv2.libraryservice.gameobjects.PlatformText
 import kotlinx.coroutines.launch
 
 /**
@@ -41,6 +41,8 @@ class First2Fragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
+        getActivity()?.setTitle(R.string.editTitle)
+
         appDatabase = MyDataBaseBuilder.getInstance(requireContext());
 
         genreSpinnerAdapter = GenreSpinnerAdapter()
@@ -55,14 +57,13 @@ class First2Fragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+
         binding.delete.isVisible = !IsAdded.getIsAdded()
 
         binding.genreSpinner.onItemSelectedListener = genreSpinnerAdapter
         binding.platFormSpinner.onItemSelectedListener = platformSpinnerAdapter
 
         var gameEntity: GameEntity
-
-        binding.imageUrlInput.setOnReceiveContentListener(null, ImageUrlContentListener())
 
         binding.saveButton.setOnClickListener {
             gameEntity = GameEntity(
@@ -84,7 +85,7 @@ class First2Fragment : Fragment() {
         _binding = null
     }
 
-    private fun saveToDatabase(gameEntity: GameEntity){
+    private fun saveToDatabase(gameEntity: GameEntity) {
         lifecycleScope.launch {
             appDatabase.gameDao().insertAll(gameEntity)
         }
