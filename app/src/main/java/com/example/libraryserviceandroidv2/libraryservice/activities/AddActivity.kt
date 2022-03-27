@@ -11,10 +11,7 @@ import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import com.example.libraryserviceandroidv2.R
 import com.example.libraryserviceandroidv2.databinding.ActivityAddBinding
-import com.example.libraryserviceandroidv2.libraryservice.adapters.ImageUrlContentListener
-import com.google.android.material.internal.ContextUtils.getActivity
 import com.google.android.material.snackbar.Snackbar
-import com.google.android.material.textfield.TextInputEditText
 
 class AddActivity : AppCompatActivity() {
 

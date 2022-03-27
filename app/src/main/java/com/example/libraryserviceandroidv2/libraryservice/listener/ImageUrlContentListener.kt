@@ -1,4 +1,4 @@
-package com.example.libraryserviceandroidv2.libraryservice.adapters
+package com.example.libraryserviceandroidv2.libraryservice.listener
 
 import android.os.Build
 import android.view.ContentInfo
