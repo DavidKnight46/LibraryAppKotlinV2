@@ -39,7 +39,7 @@ class ViewGamesRecyclerAdapter(val userList: List<GameEntity>) : RecyclerView.Ad
             .get()
             .load(userList[p1].imageUri)
             .placeholder(R.drawable.download)
-            .resize(450,450)
+            .resize(425,425)
             .into(p0.itemView.findViewById<ImageView>(R.id.gameimage))
 
     }

@@ -28,6 +28,8 @@
     <string name="editTitle">Edit/Delete Game</string>
     <string name="altLoginButtonText">Enter</string>
 
+    <string name="switchText">Show Pre-Orders</string>
+
     <string-array name="platforms">
         <item>PS1</item>
         <item>PS2</item>
@@ -44,5 +46,10 @@
         <item>FPS</item>
         <item>Fighting</item>
         <item>RTS</item>
+    </string-array>
+
+    <string-array name="filters">
+        <item>Platform</item>
+        <item>Genre</item>
     </string-array>
 </resources>
