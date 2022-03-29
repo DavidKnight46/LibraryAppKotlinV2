@@ -1,12 +1,12 @@
 package com.example.libraryserviceandroidv2
 
 import android.os.Bundle
-import android.view.View
-import android.widget.ImageButton
+import android.widget.Spinner
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.libraryserviceandroidv2.libraryservice.adapters.CardViewFilterAdapter
 import com.example.libraryserviceandroidv2.libraryservice.adapters.ViewGamesRecyclerAdapter
 import com.example.libraryserviceandroidv2.libraryservice.database.MyDataBaseBuilder
 import kotlinx.coroutines.launch
@@ -25,6 +25,15 @@ class ViewActivity : AppCompatActivity() {
 
             val linearLayoutManager =
                 LinearLayoutManager(applicationContext, LinearLayoutManager.VERTICAL, false)
+
+            var findViewById = findViewById<Spinner>(R.id.viewFilterTypes)
+            findViewById.onItemSelectedListener = CardViewFilterAdapter(
+                findViewById(R.id.viewFilterResults),
+                applicationContext,
+                gameList,
+                f,
+                linearLayoutManager
+            )
 
             f.layoutManager = linearLayoutManager
             f.adapter = ViewGamesRecyclerAdapter(gameList)
