@@ -63,6 +63,19 @@ class First2Fragment : Fragment() {
         binding.genreSpinner.onItemSelectedListener = genreSpinnerAdapter
         binding.platFormSpinner.onItemSelectedListener = platformSpinnerAdapter
 
+        binding.preOrderSwitchAdd.setText("Is Pre-order?")
+        var preOrderInt : Int = 0
+
+        var isPreOrdr = binding.preOrderSwitchAdd.setOnClickListener {
+
+            if(binding.preOrderSwitchAdd.isChecked){
+                preOrderInt = 0
+            } else {
+                preOrderInt = 1
+            }
+
+        }
+
         var gameEntity: GameEntity
 
         binding.saveButton.setOnClickListener {
@@ -73,7 +86,8 @@ class First2Fragment : Fragment() {
                 PlatformText.getPlatform(),
                 binding.ratingBar.rating,
                 binding.releaseDateInput.text.toString(),
-                binding.imageUrlInput.text.toString()
+                binding.imageUrlInput.text.toString(),
+                preOrderInt
             )
 
             saveToDatabase(gameEntity)

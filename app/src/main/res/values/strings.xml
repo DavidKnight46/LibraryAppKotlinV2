@@ -49,6 +49,7 @@
     </string-array>
 
     <string-array name="filters">
+        <item>Select One:</item>
         <item>Platform</item>
         <item>Genre</item>
     </string-array>

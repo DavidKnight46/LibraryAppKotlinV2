@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.libraryserviceandroidv2.libraryservice.adapters.CardViewFilterAdapter
 import com.example.libraryserviceandroidv2.libraryservice.adapters.ViewGamesRecyclerAdapter
 import com.example.libraryserviceandroidv2.libraryservice.database.MyDataBaseBuilder
+import com.example.libraryserviceandroidv2.libraryservice.gameobjects.GameList
 import kotlinx.coroutines.launch
 
 class ViewActivity : AppCompatActivity() {
@@ -21,6 +22,8 @@ class ViewActivity : AppCompatActivity() {
         lifecycleScope.launch {
             var gameList = MyDataBaseBuilder.getInstance(applicationContext).gameDao().getAll()
 
+            GameList.setGameList(gameList)
+
             var f = findViewById<RecyclerView>(R.id.cardviewviewlayout)
 
             val linearLayoutManager =
@@ -30,7 +33,7 @@ class ViewActivity : AppCompatActivity() {
             findViewById.onItemSelectedListener = CardViewFilterAdapter(
                 findViewById(R.id.viewFilterResults),
                 applicationContext,
-                gameList,
+                GameList.getGameList(),
                 f,
                 linearLayoutManager
             )
