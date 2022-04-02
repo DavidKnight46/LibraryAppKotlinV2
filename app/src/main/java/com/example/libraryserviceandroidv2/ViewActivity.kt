@@ -2,6 +2,7 @@ package com.example.libraryserviceandroidv2
 
 import android.os.Bundle
 import android.widget.Spinner
+import android.widget.Switch
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -20,11 +21,20 @@ class ViewActivity : AppCompatActivity() {
         setContentView(R.layout.cardviewgameslayout)
 
         lifecycleScope.launch {
-            var gameList = MyDataBaseBuilder.getInstance(applicationContext).gameDao().getAll()
+//            var gameList = MyDataBaseBuilder.getInstance(applicationContext).gameDao().getAll()
+//
+//            GameList.setGameList(gameList)
 
-            GameList.setGameList(gameList)
+            var cardviewviewlayout = findViewById<RecyclerView>(R.id.cardviewviewlayout)
+            var preOrderSwitch = findViewById<Switch>(R.id.preOrderSwitch)
 
-            var f = findViewById<RecyclerView>(R.id.cardviewviewlayout)
+            var isPreOrder = 1
+
+            preOrderSwitch.setOnClickListener {
+                if(preOrderSwitch.isChecked){
+                  isPreOrder = 0
+                }
+            }
 
             val linearLayoutManager =
                 LinearLayoutManager(applicationContext, LinearLayoutManager.VERTICAL, false)
@@ -34,12 +44,13 @@ class ViewActivity : AppCompatActivity() {
                 findViewById(R.id.viewFilterResults),
                 applicationContext,
                 GameList.getGameList(),
-                f,
-                linearLayoutManager
+                cardviewviewlayout,
+                linearLayoutManager,
+                isPreOrder
             )
 
-            f.layoutManager = linearLayoutManager
-            f.adapter = ViewGamesRecyclerAdapter(gameList)
+            cardviewviewlayout.layoutManager = linearLayoutManager
+            cardviewviewlayout.adapter = ViewGamesRecyclerAdapter(GameList.getGameList())
         }
 
     }

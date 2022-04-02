@@ -14,7 +14,8 @@ class CardViewFilterAdapter(
     var context: Context,
     var gameList: List<GameEntity>,
     var recyclerView: RecyclerView,
-    var layoutManager: RecyclerView.LayoutManager
+    var layoutManager: RecyclerView.LayoutManager,
+    var isPreOrder: Int
 ) : AdapterView.OnItemSelectedListener {
     override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
         var type = parent?.getItemAtPosition(position) as String
@@ -23,13 +24,13 @@ class CardViewFilterAdapter(
             resultSpinner.adapter =
                 createAdapter(arrayOf("Action/Adventure", "RPG", "FPS", "Fighting", "RTS"))
 
-            resultSpinner.onItemSelectedListener = ResultSpinnerItemSelectedAdapter(gameList, recyclerView, context, layoutManager, true)
+            resultSpinner.onItemSelectedListener = ResultSpinnerItemSelectedAdapter(gameList, recyclerView, context, layoutManager, 0, isPreOrder)
 
         } else if (type.contentEquals("Platform")) {
             resultSpinner.adapter =
                 createAdapter(arrayOf("PS1", "PS2", "PS3", "PS4", "PS5", "PSP", "PSVita"))
 
-            resultSpinner.onItemSelectedListener = ResultSpinnerItemSelectedAdapter(gameList, recyclerView, context, layoutManager, false)
+            resultSpinner.onItemSelectedListener = ResultSpinnerItemSelectedAdapter(gameList, recyclerView, context, layoutManager, 1, isPreOrder)
         }
     }
 

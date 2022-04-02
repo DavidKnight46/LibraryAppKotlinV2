@@ -12,19 +12,23 @@ class ResultSpinnerItemSelectedAdapter(
     var recyclerView: RecyclerView,
     var context: Context,
     var layoutManager: RecyclerView.LayoutManager,
-    var isGenre: Boolean
+    var isGenre: Int,
+    var isPreOrder: Int
 ) : AdapterView.OnItemSelectedListener {
     override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
         var str = parent?.getItemAtPosition(position) as String
 
-        if(isGenre) {
-            var toList = gameList.filter { e -> e.gameGenre.contentEquals(str) }.toList()
-            GameList.setGameList(toList)
+        if(isGenre == 0) {
+            var toList = gameList
+                .filter { e -> e.gameGenre.contentEquals(str) }
+                .filter { e -> e.preOrder == isPreOrder }
+                .toList()
 
             handleList(toList)
         } else {
-            var toList = gameList.filter { e -> e.gamePlatform.contentEquals(str) }.toList()
-            GameList.setGameList(toList)
+            var toList = gameList
+                .filter { e -> e.gamePlatform.contentEquals(str) }
+                .filter { e -> e.preOrder == isPreOrder }
 
             handleList(toList)
         }
