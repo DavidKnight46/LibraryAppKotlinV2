@@ -21,10 +21,6 @@ class ViewActivity : AppCompatActivity() {
         setContentView(R.layout.cardviewgameslayout)
 
         lifecycleScope.launch {
-//            var gameList = MyDataBaseBuilder.getInstance(applicationContext).gameDao().getAll()
-//
-//            GameList.setGameList(gameList)
-
             var cardviewviewlayout = findViewById<RecyclerView>(R.id.cardviewviewlayout)
             var preOrderSwitch = findViewById<Switch>(R.id.preOrderSwitch)
 
