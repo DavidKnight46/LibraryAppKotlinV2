@@ -11,44 +11,56 @@ import com.example.libraryserviceandroidv2.libraryservice.adapters.CardViewFilte
 import com.example.libraryserviceandroidv2.libraryservice.adapters.ViewGamesRecyclerAdapter
 import com.example.libraryserviceandroidv2.libraryservice.database.MyDataBaseBuilder
 import com.example.libraryserviceandroidv2.libraryservice.gameobjects.GameList
+import com.example.libraryserviceandroidv2.libraryservice.gameobjects.IsPreOrder
 import kotlinx.coroutines.launch
 
 class ViewActivity : AppCompatActivity() {
+
+    lateinit var isPreOrder: Integer
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         setContentView(R.layout.cardviewgameslayout)
 
-        lifecycleScope.launch {
-            var cardviewviewlayout = findViewById<RecyclerView>(R.id.cardviewviewlayout)
-            var preOrderSwitch = findViewById<Switch>(R.id.preOrderSwitch)
+        var preOrderSwitch = findViewById<Switch>(R.id.preOrderSwitch)
+        IsPreOrder.setIsPreOrder(Integer(1))
 
-            var isPreOrder = 1
-
-            preOrderSwitch.setOnClickListener {
-                if(preOrderSwitch.isChecked){
-                  isPreOrder = 0
-                }
+        preOrderSwitch.setOnClickListener {
+            if(preOrderSwitch.isChecked){
+                IsPreOrder.setIsPreOrder(Integer(0))
             }
 
-            val linearLayoutManager =
-                LinearLayoutManager(applicationContext, LinearLayoutManager.VERTICAL, false)
+            lifecycleScope.launch {
+                foo()
+            }
+        }
 
-            var findViewById = findViewById<Spinner>(R.id.viewFilterTypes)
-            findViewById.onItemSelectedListener = CardViewFilterAdapter(
-                findViewById(R.id.viewFilterResults),
-                applicationContext,
-                GameList.getGameList(),
-                cardviewviewlayout,
-                linearLayoutManager,
-                isPreOrder
-            )
-
-            cardviewviewlayout.layoutManager = linearLayoutManager
-            cardviewviewlayout.adapter = ViewGamesRecyclerAdapter(GameList.getGameList())
+        lifecycleScope.launch {
+            foo()
         }
 
     }
+
+    private fun foo() {
+        var cardviewviewlayout = findViewById<RecyclerView>(R.id.cardviewviewlayout)
+
+        val linearLayoutManager =
+            LinearLayoutManager(applicationContext, LinearLayoutManager.VERTICAL, false)
+
+        var findViewById = findViewById<Spinner>(R.id.viewFilterTypes)
+        findViewById.onItemSelectedListener = CardViewFilterAdapter(
+            findViewById(R.id.viewFilterResults),
+            applicationContext,
+            GameList.getGameList(),
+            cardviewviewlayout,
+            linearLayoutManager,
+            IsPreOrder.getIsPreOrder().toInt()
+        )
+
+        cardviewviewlayout.layoutManager = linearLayoutManager
+        cardviewviewlayout.adapter = ViewGamesRecyclerAdapter(GameList.getGameList())
+    }
+
 
 }

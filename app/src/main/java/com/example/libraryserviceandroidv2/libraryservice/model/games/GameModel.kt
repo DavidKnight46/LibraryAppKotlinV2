@@ -2,9 +2,14 @@ package com.example.libraryserviceandroidv2.libraryservice.model.games
 
 import java.time.LocalDate
 
-data class GameModel(val name:String, val rating: Int, val releaseDate: LocalDate){
+data class GameModel(val gameName:String,
+                     val gameGenre: Int,
+                     val gameRating: Float,
+                     val imageUrl: String,
+                     val preOrdered: Boolean,
+                     val releaseDate: LocalDate){
 
     override fun toString(): String {
-        return "GameModel(name='$name')"
+        return "GameModel(name='$gameName')"
     }
 }

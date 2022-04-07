@@ -1,35 +1,25 @@
 package com.example.libraryserviceandroidv2.libraryservice.client.game
 
-import org.apache.http.client.methods.HttpGet
-import org.apache.http.impl.client.HttpClients
-import java.net.URI
-import java.net.URISyntaxException
+import com.example.libraryserviceandroidv2.libraryservice.client.rxclient.MyRxGameApi
+import com.example.libraryserviceandroidv2.libraryservice.client.rxclient.MyGameRxClient
 
 class LibraryServiceGameClientImpl : LibraryServiceGameClient {
 
-    override fun getDetailsGame(id: String) {
-        TODO("Not yet implemented")
+    override fun getDetailsGame(id: Int) {
+        callEndpoint(id)
     }
 
-    private fun callEndpoint(endPoint: String) {
-        try {
+    private fun callEndpoint(endPoint: Int) {
 
-            var uriStr = String.format(
-                "http://localhost:8080/libraryservice/game/%s?user=%2&sortBy=%sorder=%s",
-                endPoint
-            )
+        var myRxGameApi = MyGameRxClient
+            .getRxClient()
+            .create(MyRxGameApi::class.java)
 
-            var execute = HttpClients.createDefault().execute(HttpGet(URI.create(uriStr)))
+        var call = myRxGameApi
+            .GetAllGames(endPoint)
+            .execute()
 
-            do {
-                var content = execute.entity.content
-
-            } while (content.available() != 0)
-
-        } catch (e: URISyntaxException) {
-
-        }
-
+        System.out.println("smurf")
     }
 
 }
