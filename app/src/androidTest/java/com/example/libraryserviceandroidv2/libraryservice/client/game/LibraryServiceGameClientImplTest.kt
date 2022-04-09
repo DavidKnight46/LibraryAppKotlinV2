@@ -15,7 +15,10 @@ class LibraryServiceGameClientImplTest {
     @Test
     fun getGamesFromApi() {
         var detailsGame = libraryServiceGameClient.getDetailsGame(1)
+    }
 
-        System.out.println("smurf")
+    @Test
+    fun getUsersFromAPI() {
+        var anUser = libraryServiceGameClient.getAnUser("TestUser1", "Password1")
     }
 }

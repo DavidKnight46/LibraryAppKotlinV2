@@ -2,49 +2,90 @@ package com.example.libraryserviceandroidv2.libraryservice.activities
 
 import android.annotation.SuppressLint
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
-import androidx.lifecycle.lifecycleScope
 import com.example.libraryserviceandroidv2.R
+import com.example.libraryserviceandroidv2.libraryservice.client.game.LibraryServiceGameClientImpl
 import com.example.libraryserviceandroidv2.libraryservice.client.user.UserClient
-import com.example.libraryserviceandroidv2.libraryservice.database.MyDataBaseBuilder
+import com.example.libraryserviceandroidv2.libraryservice.database.entity.GameEntity
 import com.example.libraryserviceandroidv2.libraryservice.gameobjects.GameList
-import com.google.android.material.internal.ContextUtils.getActivity
+import com.example.libraryserviceandroidv2.libraryservice.gameobjects.User
+import com.example.libraryserviceandroidv2.libraryservice.model.games.GameModel
 import com.google.android.material.textfield.TextInputEditText
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
+import java.util.stream.Collectors
 
 class MainActivity : AppCompatActivity() {
 
     lateinit var loginButton: Button
     lateinit var userClient: UserClient
+    lateinit var libraryServiceGameClient: LibraryServiceGameClientImpl
 
     @SuppressLint("RestrictedApi")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        lifecycleScope.launch {
-            var gameList = MyDataBaseBuilder.getInstance(applicationContext).gameDao().getAll()
-
-            GameList.setGameList(gameList)
-        }
-
-        loginButton =  findViewById(R.id.loginButton)
+        loginButton = findViewById(R.id.loginButton)
         loginButton.setText(R.string.altLoginButtonText)
 
-        findViewById<TextInputEditText>(R.id.passwordInput).isVisible = false
-        findViewById<TextInputEditText>(R.id.gameNameInput).isVisible = false
+        findViewById<TextInputEditText>(R.id.passwordInput).isVisible = true
+        findViewById<TextInputEditText>(R.id.gameNameInput).isVisible = true
 
         userClient = UserClient()
     }
 
-    fun testClick(view: View){
-            var intent = Intent(this, viewActivity::class.java)
+    fun testClick(view: View) {
+        GlobalScope.launch(Dispatchers.IO) {
+            var password = findViewById<TextInputEditText>(R.id.passwordInput).text
+            var username = findViewById<TextInputEditText>(R.id.gameNameInput).text
 
-            startActivity(intent)
+            libraryServiceGameClient = LibraryServiceGameClientImpl()
+
+            var anUser =
+                libraryServiceGameClient.getAnUser(username.toString(), password.toString())
+
+            User.setID(anUser?.id.toString())
+        }
+
+        var intent = Intent(this, viewActivity::class.java)
+
+        GlobalScope.launch(Dispatchers.IO) {
+            var detailsGame = libraryServiceGameClient.getDetailsGame(User.getId().toInt())
+
+            var collect =
+                detailsGame.stream().map { e -> createGameModel(e) }.collect(Collectors.toList())
+
+            GameList.setGameList(collect)
+        }
+
+        startActivity(intent)
+    }
+
+    fun createGameModel(gameModel: GameModel): GameEntity {
+        var isPreOrdered : Int
+
+        if(gameModel.preOrdered){
+            isPreOrdered = 0
+        }else{
+            isPreOrdered = 1
+        }
+
+        return GameEntity(
+            1,
+            gameModel.gameName,
+            gameModel.gameGenre,
+            gameModel.platform,
+            gameModel.gameRating,
+            gameModel.releaseDate,
+            gameModel.imageUrl,
+            isPreOrdered
+        )
     }
 
 }
