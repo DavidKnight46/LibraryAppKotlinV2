@@ -12,7 +12,7 @@ object MyGameRxClient {
 
     init {
         retrofit = Retrofit.Builder()
-            .baseUrl("http://127.0.0.1:8080/")
+            .baseUrl("http://DESKTOP-F3IO7KQ:8080/libraryservice/")
             .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
             .addConverterFactory(GsonConverterFactory.create())
             .client(OkHttpClient())

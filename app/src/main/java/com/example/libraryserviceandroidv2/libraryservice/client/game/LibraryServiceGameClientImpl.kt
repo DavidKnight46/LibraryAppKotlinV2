@@ -1,25 +1,24 @@
 package com.example.libraryserviceandroidv2.libraryservice.client.game
 
-import com.example.libraryserviceandroidv2.libraryservice.client.rxclient.MyRxGameApi
 import com.example.libraryserviceandroidv2.libraryservice.client.rxclient.MyGameRxClient
+import com.example.libraryserviceandroidv2.libraryservice.model.games.GameModel
+import retrofit2.Response
+import java.util.stream.Collectors
 
 class LibraryServiceGameClientImpl : LibraryServiceGameClient {
 
-    override fun getDetailsGame(id: Int) {
-        callEndpoint(id)
+    override fun getDetailsGame(id: Int) : List<GameModel> {
+        return callGameAPIEndpoint(id)
+            .body()?.stream()?.collect(Collectors.toList()) as MutableList
     }
 
-    private fun callEndpoint(endPoint: Int) {
-
-        var myRxGameApi = MyGameRxClient
+    private fun callGameAPIEndpoint(userId: Int): Response<List<GameModel>> {
+        return MyGameRxClient
             .getRxClient()
             .create(MyRxGameApi::class.java)
-
-        var call = myRxGameApi
-            .GetAllGames(endPoint)
+            .GetAllGames(userId)
             .execute()
 
-        System.out.println("smurf")
     }
 
 }

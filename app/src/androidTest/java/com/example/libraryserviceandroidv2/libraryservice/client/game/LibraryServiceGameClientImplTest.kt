@@ -13,11 +13,9 @@ class LibraryServiceGameClientImplTest {
     }
 
     @Test
-    fun foo() {
-        //libraryServiceGameClient = LibraryServiceGameClientImpl()
+    fun getGamesFromApi() {
+        var detailsGame = libraryServiceGameClient.getDetailsGame(1)
 
-        libraryServiceGameClient.getDetailsGame("1")
-
-
+        System.out.println("smurf")
     }
 }
