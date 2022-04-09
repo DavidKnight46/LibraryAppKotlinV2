@@ -51,20 +51,18 @@ class MainActivity : AppCompatActivity() {
                 libraryServiceGameClient.getAnUser(username.toString(), password.toString())
 
             User.setID(anUser?.id.toString())
-        }
 
-        var intent = Intent(this, viewActivity::class.java)
-
-        GlobalScope.launch(Dispatchers.IO) {
             var detailsGame = libraryServiceGameClient.getDetailsGame(User.getId().toInt())
 
             var collect =
                 detailsGame.stream().map { e -> createGameModel(e) }.collect(Collectors.toList())
 
             GameList.setGameList(collect)
-        }
 
-        startActivity(intent)
+            var intent = Intent(applicationContext, viewActivity::class.java)
+
+            startActivity(intent)
+        }
     }
 
     fun createGameModel(gameModel: GameModel): GameEntity {
