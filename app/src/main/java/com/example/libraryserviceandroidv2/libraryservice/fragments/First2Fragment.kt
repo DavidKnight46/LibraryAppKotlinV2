@@ -13,12 +13,16 @@ import com.example.libraryserviceandroidv2.R
 import com.example.libraryserviceandroidv2.databinding.FragmentFirst2Binding
 import com.example.libraryserviceandroidv2.libraryservice.adapters.GenreSpinnerAdapter
 import com.example.libraryserviceandroidv2.libraryservice.adapters.PlatformSpinnerAdapter
+import com.example.libraryserviceandroidv2.libraryservice.client.game.LibraryServiceGameClientImpl
 import com.example.libraryserviceandroidv2.libraryservice.database.AppDatabase
 import com.example.libraryserviceandroidv2.libraryservice.database.MyDataBaseBuilder
 import com.example.libraryserviceandroidv2.libraryservice.database.entity.GameEntity
 import com.example.libraryserviceandroidv2.libraryservice.gameobjects.GenreText
 import com.example.libraryserviceandroidv2.libraryservice.gameobjects.IsAdded
 import com.example.libraryserviceandroidv2.libraryservice.gameobjects.PlatformText
+import com.example.libraryserviceandroidv2.libraryservice.gameobjects.User
+import com.example.libraryserviceandroidv2.libraryservice.model.games.GameModel
+import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 
 /**
@@ -57,41 +61,34 @@ class First2Fragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-
         binding.delete.isVisible = !IsAdded.getIsAdded()
 
         binding.genreSpinner.onItemSelectedListener = genreSpinnerAdapter
         binding.platFormSpinner.onItemSelectedListener = platformSpinnerAdapter
 
         binding.preOrderSwitchAdd.setText("Is Pre-order?")
-        var preOrderInt : Int = 0
-
-        var isPreOrdr = binding.preOrderSwitchAdd.setOnClickListener {
-
-            if(binding.preOrderSwitchAdd.isChecked){
-                preOrderInt = 0
-            } else {
-                preOrderInt = 1
-            }
-
-        }
-
-        var gameEntity: GameEntity
 
         binding.saveButton.setOnClickListener {
-            gameEntity = GameEntity(
-                0,
-                binding.gameNameInput.text.toString(),
-                GenreText.getGenre(),
-                PlatformText.getPlatform(),
-                binding.ratingBar.rating,
-                binding.releaseDateInput.text.toString(),
-                binding.imageUrlInput.text.toString(),
-                preOrderInt
-            )
 
-            saveToDatabase(gameEntity)
+            GlobalScope.launch {
+
+                var gameModel = GameModel(
+                    User.getId().toInt(),
+                    binding.gameNameInput.text.toString(),
+                    GenreText.getGenre(),
+                    PlatformText.getPlatform(),
+                    binding.ratingBar.rating,
+                    binding.releaseDateInput.text.toString(),
+                    binding.preOrderSwitchAdd.isChecked,
+                    binding.imageUrlInput.text.toString()
+                )
+
+                var libraryServiceGameClientImpl = LibraryServiceGameClientImpl()
+
+                libraryServiceGameClientImpl.addAnGame(gameModel)
+            }
         }
+
     }
 
     override fun onDestroyView() {

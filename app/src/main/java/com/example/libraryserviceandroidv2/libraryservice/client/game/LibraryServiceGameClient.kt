@@ -10,4 +10,6 @@ interface LibraryServiceGameClient {
 
     fun getAnUser(username: String, password: String): UserModel?
 
+    fun addAnGame(gameModel: GameModel)
+
 }

@@ -9,13 +9,17 @@ import java.util.stream.Collectors
 
 class LibraryServiceGameClientImpl : LibraryServiceGameClient {
 
-    override fun getDetailsGame(id: Int) : List<GameModel> {
+    override fun getDetailsGame(id: Int): List<GameModel> {
         return callGameAPIEndpoint(id)
             .body()?.stream()?.collect(Collectors.toList()) as MutableList
     }
 
     override fun getAnUser(username: String, password: String): UserModel? {
         return callUserAPIEndpoint(username, password)?.body()
+    }
+
+    override fun addAnGame(gameModel: GameModel) {
+        return callAddGameAPIEndpoint(gameModel)
     }
 
     private fun callGameAPIEndpoint(userId: Int): Response<List<GameModel>> {
@@ -27,7 +31,7 @@ class LibraryServiceGameClientImpl : LibraryServiceGameClient {
 
     }
 
-    private fun callUserAPIEndpoint(username: String, password: String): Response<UserModel>{
+    private fun callUserAPIEndpoint(username: String, password: String): Response<UserModel> {
         return com.example.libraryserviceandroidv2.libraryservice.client.rxclient.MyUserRxClient
             .getRxClient()
             .create(MyUserRxClient::class.java)
@@ -35,4 +39,11 @@ class LibraryServiceGameClientImpl : LibraryServiceGameClient {
             .execute()
     }
 
+    private fun callAddGameAPIEndpoint(gameModel: GameModel) {
+         MyGameRxClient
+            .getRxClient()
+            .create(MyRxGameApi::class.java)
+            .addAnGame(gameModel)
+            .execute()
+    }
 }
