@@ -78,9 +78,9 @@ class First2Fragment : Fragment() {
                     GenreText.getGenre(),
                     PlatformText.getPlatform(),
                     binding.ratingBar.rating,
-                    binding.releaseDateInput.text.toString(),
+                    binding.imageUrlInput.text.toString(),
                     binding.preOrderSwitchAdd.isChecked,
-                    binding.imageUrlInput.text.toString()
+                    binding.releaseDateInput.text.toString()
                 )
 
                 var libraryServiceGameClientImpl = LibraryServiceGameClientImpl()
