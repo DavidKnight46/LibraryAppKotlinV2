@@ -17,10 +17,7 @@ import com.example.libraryserviceandroidv2.libraryservice.client.game.LibrarySer
 import com.example.libraryserviceandroidv2.libraryservice.database.AppDatabase
 import com.example.libraryserviceandroidv2.libraryservice.database.MyDataBaseBuilder
 import com.example.libraryserviceandroidv2.libraryservice.database.entity.GameEntity
-import com.example.libraryserviceandroidv2.libraryservice.gameobjects.GenreText
-import com.example.libraryserviceandroidv2.libraryservice.gameobjects.IsAdded
-import com.example.libraryserviceandroidv2.libraryservice.gameobjects.PlatformText
-import com.example.libraryserviceandroidv2.libraryservice.gameobjects.User
+import com.example.libraryserviceandroidv2.libraryservice.gameobjects.*
 import com.example.libraryserviceandroidv2.libraryservice.model.games.GameModel
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
@@ -70,9 +67,13 @@ class First2Fragment : Fragment() {
 
         binding.saveButton.setOnClickListener {
 
+            binding.saveButton.isEnabled = false
+
             GlobalScope.launch {
+                var id = GameList.getGameList().last().id
 
                 var gameModel = GameModel(
+                    ++id,
                     User.getId().toInt(),
                     binding.gameNameInput.text.toString(),
                     GenreText.getGenre(),
@@ -86,9 +87,18 @@ class First2Fragment : Fragment() {
                 var libraryServiceGameClientImpl = LibraryServiceGameClientImpl()
 
                 libraryServiceGameClientImpl.addAnGame(gameModel)
+
+                clearScreen()
+
+                binding.saveButton.isEnabled = true
             }
         }
+    }
 
+    fun clearScreen(){
+        binding.gameNameInput.text?.clear()
+        binding.imageUrlInput.text?.clear()
+        binding.releaseDateInput.text?.clear()
     }
 
     override fun onDestroyView() {

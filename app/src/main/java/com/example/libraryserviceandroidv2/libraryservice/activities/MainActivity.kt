@@ -75,7 +75,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         return GameEntity(
-            1,
+            gameModel.id,
             gameModel.gameName,
             gameModel.gameGenre,
             gameModel.platform,
