@@ -13,11 +13,14 @@ interface GameDAO {
     suspend fun getAnGame(idGame: Long): GameEntity
 
     @Insert
-    suspend fun insertAll(vararg users: GameEntity)
+    fun insertAll(vararg users: GameEntity)
 
     @Delete
     suspend fun delete(vararg users: GameEntity)
 
     @Update
     suspend fun update(vararg users: GameEntity)
+
+    @Query("DELETE FROM gameentity")
+    fun delete()
 }

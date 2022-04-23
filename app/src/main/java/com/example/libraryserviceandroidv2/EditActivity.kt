@@ -13,9 +13,12 @@ import com.example.libraryserviceandroidv2.libraryservice.gameobjects.GenreText
 import com.example.libraryserviceandroidv2.libraryservice.gameobjects.PlatformText
 import com.example.libraryserviceandroidv2.libraryservice.database.AppDatabase
 import com.example.libraryserviceandroidv2.libraryservice.database.MyDataBaseBuilder
+import com.example.libraryserviceandroidv2.libraryservice.database.entity.GameEntity
+import com.example.libraryserviceandroidv2.libraryservice.gameobjects.GameList
 import com.google.android.material.internal.ContextUtils.getActivity
 import com.google.android.material.textfield.TextInputEditText
 import kotlinx.coroutines.launch
+import java.util.stream.Collectors
 
 class EditActivity : AppCompatActivity() {
     private lateinit var appDatabase: AppDatabase
@@ -32,10 +35,16 @@ class EditActivity : AppCompatActivity() {
         lifecycleScope.launch {
             appDatabase = MyDataBaseBuilder.getInstance(applicationContext)
 
+            var mutableListOf = mutableListOf<GameEntity>()
+
+            GameList.getGameList().stream().forEach {
+                e -> mutableListOf.add(e)
+            }
+
             var arrayAdapter = ArrayAdapter(
                 applicationContext,
                 android.R.layout.simple_spinner_item,
-                appDatabase.gameDao().getAll()
+                mutableListOf
             )
 
             binding.gamesToEdit.adapter = arrayAdapter

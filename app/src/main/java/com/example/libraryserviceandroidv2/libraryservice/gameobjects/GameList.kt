@@ -4,13 +4,13 @@ import com.example.libraryserviceandroidv2.libraryservice.database.entity.GameEn
 import java.util.ArrayList
 
 object GameList {
-    var list: List<GameEntity> = ArrayList()
+    private var INSTANCE: ArrayList<GameEntity>? = null
 
-    fun setGameList(list: List<GameEntity>){
-        this.list = list
-    }
+    fun getGameList(): ArrayList<GameEntity>{
+        if(INSTANCE == null) {
+            INSTANCE = ArrayList()
+        }
 
-    fun getGameList(): List<GameEntity>{
-        return list
+        return INSTANCE!!
     }
 }

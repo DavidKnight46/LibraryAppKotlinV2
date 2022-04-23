@@ -18,7 +18,6 @@ import com.google.android.material.textfield.TextInputEditText
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
-import java.util.stream.Collectors
 
 class MainActivity : AppCompatActivity() {
 
@@ -54,10 +53,7 @@ class MainActivity : AppCompatActivity() {
 
             var detailsGame = libraryServiceGameClient.getDetailsGame(User.getId().toInt())
 
-            var collect =
-                detailsGame.stream().map { e -> createGameModel(e) }.collect(Collectors.toList())
-
-            GameList.setGameList(collect)
+            detailsGame.stream().forEach { e -> createGameModel(e) }
 
             var intent = Intent(applicationContext, viewActivity::class.java)
 
@@ -65,16 +61,16 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    fun createGameModel(gameModel: GameModel): GameEntity {
-        var isPreOrdered : Int
+    fun createGameModel(gameModel: GameModel) {
+        var isPreOrdered: Int
 
-        if(gameModel.preOrdered){
+        if (gameModel.preOrdered) {
             isPreOrdered = 0
-        }else{
+        } else {
             isPreOrdered = 1
         }
 
-        return GameEntity(
+        GameList.getGameList().add(GameEntity(
             gameModel.id,
             gameModel.gameName,
             gameModel.gameGenre,
@@ -83,7 +79,7 @@ class MainActivity : AppCompatActivity() {
             gameModel.releaseDate,
             gameModel.imageUrl,
             isPreOrdered
-        )
+        ))
     }
 
 }

@@ -12,6 +12,7 @@ interface MyRxGameApi {
     @GET("gamecontroller/v2/getAllGames/{id}")
     fun GetAllGames(@Path("id") id: Int): Call<List<GameModel>>
 
-    @POST("gamecontroller/v2/addNewGame")
-    fun addAnGame(@Body gameModel: GameModel): Call<Void>
+    @POST("gamecontroller/v2/addNewGame/{id}")
+    fun addAnGame(@Path("id") id: Int,
+                  @Body gameModel: GameModel): Call<Void>
 }

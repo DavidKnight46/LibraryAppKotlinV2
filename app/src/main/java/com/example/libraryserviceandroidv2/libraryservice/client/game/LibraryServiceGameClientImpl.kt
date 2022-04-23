@@ -9,9 +9,9 @@ import java.util.stream.Collectors
 
 class LibraryServiceGameClientImpl : LibraryServiceGameClient {
 
-    override fun getDetailsGame(id: Int): List<GameModel> {
+    override fun getDetailsGame(id: Int): ArrayList<GameModel> {
         return callGameAPIEndpoint(id)
-            .body()?.stream()?.collect(Collectors.toList()) as MutableList
+            .body()?.stream()?.collect(Collectors.toList()) as ArrayList
     }
 
     override fun getAnUser(username: String, password: String): UserModel? {
@@ -43,7 +43,7 @@ class LibraryServiceGameClientImpl : LibraryServiceGameClient {
          MyGameRxClient
             .getRxClient()
             .create(MyRxGameApi::class.java)
-            .addAnGame(gameModel)
+            .addAnGame(gameModel.id, gameModel)
             .execute()
     }
 }
