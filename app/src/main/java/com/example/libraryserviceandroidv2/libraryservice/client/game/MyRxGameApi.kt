@@ -2,10 +2,7 @@ package com.example.libraryserviceandroidv2.libraryservice.client.game
 
 import com.example.libraryserviceandroidv2.libraryservice.model.games.GameModel
 import retrofit2.Call
-import retrofit2.http.Body
-import retrofit2.http.GET
-import retrofit2.http.POST
-import retrofit2.http.Path
+import retrofit2.http.*
 
 interface MyRxGameApi {
 
@@ -15,4 +12,10 @@ interface MyRxGameApi {
     @POST("gamecontroller/v2/addNewGame/{id}")
     fun addAnGame(@Path("id") id: Int,
                   @Body gameModel: GameModel): Call<Void>
+
+    @PUT("gamecontroller/v2/updateGame")
+    fun updateAnGame(@Body gameModel: GameModel): Call<Void>
+
+    @DELETE("gamecontroller/v2/deleteGame")
+    fun deleteAnGame(@Body gameModel: GameModel): Call<Void>
 }

@@ -75,7 +75,7 @@ class First2Fragment : Fragment() {
                 var gameModel = GameModel(
                     ++id,
                     User.getId().toInt(),
-                    binding.gameNameInput.text.toString(),
+                    binding.gameNameInput1.text.toString(),
                     GenreText.getGenre(),
                     PlatformText.getPlatform(),
                     binding.ratingBar.rating,
@@ -96,7 +96,7 @@ class First2Fragment : Fragment() {
     }
 
     fun clearScreen(){
-        binding.gameNameInput.text?.clear()
+        binding.gameNameInput1.text?.clear()
         binding.imageUrlInput.text?.clear()
         binding.releaseDateInput.text?.clear()
     }

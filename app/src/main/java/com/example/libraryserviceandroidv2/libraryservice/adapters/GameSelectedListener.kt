@@ -9,7 +9,7 @@ import com.example.libraryserviceandroidv2.R
 import com.example.libraryserviceandroidv2.libraryservice.database.entity.GameEntity
 import com.google.android.material.textfield.TextInputEditText
 
-class EditGameAdapter(
+class GameSelectedListener(
     gameName: TextInputEditText,
     releaseDateText: TextInputEditText,
     imageUrl: TextInputEditText,

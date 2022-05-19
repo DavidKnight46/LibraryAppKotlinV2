@@ -1,7 +1,7 @@
 package com.example.libraryserviceandroidv2.libraryservice.model.games
 
 data class GameModel(val id: Int,
-                     val userId: Int,
+                     val userid: Int,
                      val gameName:String,
                      val gameGenre: String,
                      val platform: String,
