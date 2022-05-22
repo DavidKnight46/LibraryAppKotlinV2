@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
 import com.example.libraryserviceandroidv2.R
 import com.example.libraryserviceandroidv2.libraryservice.client.game.LibraryServiceGameClientImpl
+import com.example.libraryserviceandroidv2.libraryservice.client.user.LibraryServiceUserClientImpl
 import com.example.libraryserviceandroidv2.libraryservice.client.user.UserClient
 import com.example.libraryserviceandroidv2.libraryservice.database.entity.GameEntity
 import com.example.libraryserviceandroidv2.libraryservice.gameobjects.GameList
@@ -24,6 +25,7 @@ class MainActivity : AppCompatActivity() {
     lateinit var loginButton: Button
     lateinit var userClient: UserClient
     lateinit var libraryServiceGameClient: LibraryServiceGameClientImpl
+    lateinit var libraryServiceUserClient: LibraryServiceUserClientImpl
 
     @SuppressLint("RestrictedApi")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -36,7 +38,7 @@ class MainActivity : AppCompatActivity() {
         findViewById<TextInputEditText>(R.id.passwordInput).isVisible = true
         findViewById<TextInputEditText>(R.id.gameNameInput).isVisible = true
 
-        userClient = UserClient()
+        libraryServiceUserClient = LibraryServiceUserClientImpl()
     }
 
     fun testClick(view: View) {
@@ -47,7 +49,7 @@ class MainActivity : AppCompatActivity() {
             libraryServiceGameClient = LibraryServiceGameClientImpl()
 
             var anUser =
-                libraryServiceGameClient.getAnUser(username.toString(), password.toString())
+                libraryServiceUserClient.getUser(username.toString(), password.toString())
 
             User.setID(anUser?.id.toString())
 
