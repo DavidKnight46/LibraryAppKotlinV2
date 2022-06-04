@@ -10,7 +10,7 @@ object MyUserRxClient {
 
     init {
         retrofit = Retrofit.Builder()
-            .baseUrl("http://DESKTOP-F3IO7KQ:8080/libraryservice/user/")
+            .baseUrl("http://DESKTOP-F3IO7KQ:8080/libraryservice/")
             .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
             .addConverterFactory(GsonConverterFactory.create())
             .client(OkHttpClient())
