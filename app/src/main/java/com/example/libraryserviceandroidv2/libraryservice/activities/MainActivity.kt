@@ -23,7 +23,6 @@ import kotlinx.coroutines.launch
 class MainActivity : AppCompatActivity() {
 
     lateinit var loginButton: Button
-    lateinit var userClient: UserClient
     lateinit var libraryServiceGameClient: LibraryServiceGameClientImpl
     lateinit var libraryServiceUserClient: LibraryServiceUserClientImpl
 

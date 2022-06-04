@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import androidx.annotation.RequiresApi
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
@@ -19,6 +20,7 @@ import com.example.libraryserviceandroidv2.libraryservice.database.MyDataBaseBui
 import com.example.libraryserviceandroidv2.libraryservice.database.entity.GameEntity
 import com.example.libraryserviceandroidv2.libraryservice.gameobjects.*
 import com.example.libraryserviceandroidv2.libraryservice.model.games.GameModel
+import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 
@@ -30,6 +32,8 @@ class First2Fragment : Fragment() {
     private lateinit var genreSpinnerAdapter: GenreSpinnerAdapter
     private lateinit var platformSpinnerAdapter: PlatformSpinnerAdapter
     private lateinit var appDatabase: AppDatabase
+    private lateinit var libraryServiceGameClient: LibraryServiceGameClientImpl
+    private lateinit var myGameList : ArrayList<GameModel>
 
     private var _binding: FragmentFirst2Binding? = null
 
@@ -41,6 +45,7 @@ class First2Fragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        libraryServiceGameClient = LibraryServiceGameClientImpl()
 
         getActivity()?.setTitle(R.string.editTitle)
 
@@ -50,6 +55,10 @@ class First2Fragment : Fragment() {
         platformSpinnerAdapter = PlatformSpinnerAdapter()
 
         _binding = FragmentFirst2Binding.inflate(inflater, container, false)
+
+        if(!IsAdded.getIsAdded()) {
+            _binding?.saveButton?.text = resources.getText(R.string.editGame)
+        }
 
         return binding.root
     }
@@ -106,9 +115,9 @@ class First2Fragment : Fragment() {
         _binding = null
     }
 
-    private fun saveToDatabase(gameEntity: GameEntity) {
+    private fun saveToDatabase() {
         lifecycleScope.launch {
-            appDatabase.gameDao().insertAll(gameEntity)
+            myGameList = libraryServiceGameClient.getDetailsGame(User.getId().toInt())
         }
     }
 
