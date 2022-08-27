@@ -6,11 +6,11 @@ import retrofit2.http.*
 
 interface MyRxGameApi {
 
-    @GET("gamecontroller/v2/getAllGames/{id}")
-    fun GetAllGames(@Path("id") id: Int): Call<List<GameModel>>
+    @GET("gamecontroller/v2/getAllGames/{userName}")
+    fun GetAllGames(@Path("userName") userName: String): Call<List<GameModel>>
 
     @POST("gamecontroller/v2/addNewGame/{id}")
-    fun addAnGame(@Path("id") id: Int,
+    fun addAnGame(@Path("id") id: String,
                   @Body gameModel: GameModel): Call<Void>
 
     @PUT("gamecontroller/v2/updateGame")

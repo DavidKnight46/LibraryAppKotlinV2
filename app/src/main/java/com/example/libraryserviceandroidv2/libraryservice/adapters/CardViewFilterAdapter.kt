@@ -8,11 +8,12 @@ import android.widget.ArrayAdapter
 import android.widget.Spinner
 import androidx.recyclerview.widget.RecyclerView
 import com.example.libraryserviceandroidv2.libraryservice.database.entity.GameEntity
+import com.example.libraryserviceandroidv2.libraryservice.model.games.GameModel
 
 class CardViewFilterAdapter(
     var resultSpinner: Spinner,
     var context: Context,
-    var gameList: List<GameEntity>,
+    var gameList: List<GameModel>,
     var recyclerView: RecyclerView,
     var layoutManager: RecyclerView.LayoutManager,
     var isPreOrder: Int

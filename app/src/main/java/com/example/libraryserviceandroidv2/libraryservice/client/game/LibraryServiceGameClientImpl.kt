@@ -7,8 +7,8 @@ import java.util.stream.Collectors
 
 class LibraryServiceGameClientImpl : LibraryServiceGameClient {
 
-    override fun getDetailsGame(id: Int): ArrayList<GameModel> {
-        return callGameAPIEndpoint(id)
+    override fun getDetailsGame(userName: String): ArrayList<GameModel> {
+        return callGameAPIEndpoint(userName)
             .body()?.stream()?.collect(Collectors.toList()) as ArrayList
     }
 
@@ -24,11 +24,11 @@ class LibraryServiceGameClientImpl : LibraryServiceGameClient {
         return callDeleteAPIEndpoint(gameModel)
     }
 
-    private fun callGameAPIEndpoint(userId: Int): Response<List<GameModel>> {
+    private fun callGameAPIEndpoint(userName: String): Response<List<GameModel>> {
         return MyGameRxClient
             .getRxClient()
             .create(MyRxGameApi::class.java)
-            .GetAllGames(userId)
+            .GetAllGames(userName)
             .execute()
     }
 
@@ -36,7 +36,7 @@ class LibraryServiceGameClientImpl : LibraryServiceGameClient {
         MyGameRxClient
             .getRxClient()
             .create(MyRxGameApi::class.java)
-            .addAnGame(gameModel.id, gameModel)
+            .addAnGame(gameModel.name, gameModel)
             .execute()
     }
 

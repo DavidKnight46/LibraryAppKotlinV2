@@ -9,9 +9,10 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.libraryserviceandroidv2.R
 import com.example.libraryserviceandroidv2.libraryservice.database.entity.GameEntity
+import com.example.libraryserviceandroidv2.libraryservice.model.games.GameModel
 import com.squareup.picasso.Picasso
 
-class ViewGamesRecyclerAdapter(val userList: List<GameEntity>) : RecyclerView.Adapter<ViewGamesRecyclerAdapter.ViewHolder>() {
+class ViewGamesRecyclerAdapter(val userList: List<GameModel>) : RecyclerView.Adapter<ViewGamesRecyclerAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(p0: ViewGroup, p1: Int): ViewHolder {
         val v = LayoutInflater.from(p0?.context).inflate(R.layout.cardviewlayout, p0, false)
@@ -29,15 +30,15 @@ class ViewGamesRecyclerAdapter(val userList: List<GameEntity>) : RecyclerView.Ad
         var iGameReleaseDate = p0.itemView.findViewById<TextView>(R.id.gameReleaseDateText)
         var iGameRatingBar = p0.itemView.findViewById<RatingBar>(R.id.ratingBarCard)
 
-        iGameText.setText(userList[p1].gameName)
-        iGamePlatform.setText(userList[p1].gamePlatform)
-        iGameGenre.setText(userList[p1].gameGenre)
+        iGameText.setText(userList[p1].name)
+        iGamePlatform.setText(userList[p1].platform)
+        iGameGenre.setText(userList[p1].genre)
         iGameReleaseDate.setText(userList[p1].releaseDate)
-        iGameRatingBar.rating = userList[p1].rating
+        iGameRatingBar.rating = userList[p1].gameRating
 
         Picasso
             .get()
-            .load(userList[p1].imageUri)
+            .load(userList[p1].imageUrl)
             .placeholder(R.drawable.download)
             .resize(425,425)
             .into(p0.itemView.findViewById<ImageView>(R.id.gameimage))

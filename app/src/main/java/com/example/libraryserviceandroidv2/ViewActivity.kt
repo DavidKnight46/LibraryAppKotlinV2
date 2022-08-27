@@ -13,6 +13,7 @@ import com.example.libraryserviceandroidv2.libraryservice.database.MyDataBaseBui
 import com.example.libraryserviceandroidv2.libraryservice.gameobjects.GameList
 import com.example.libraryserviceandroidv2.libraryservice.gameobjects.IsPreOrder
 import kotlinx.coroutines.launch
+import java.util.*
 
 class ViewActivity : AppCompatActivity() {
 
@@ -52,7 +53,7 @@ class ViewActivity : AppCompatActivity() {
         findViewById.onItemSelectedListener = CardViewFilterAdapter(
             findViewById(R.id.viewFilterResults),
             applicationContext,
-            GameList.getGameList(),
+            Collections.emptyList(),//TODO
             cardviewviewlayout,
             linearLayoutManager,
             IsPreOrder.getIsPreOrder().toInt()

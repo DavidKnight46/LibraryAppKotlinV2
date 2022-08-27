@@ -14,6 +14,7 @@ import com.example.libraryserviceandroidv2.libraryservice.client.user.UserClient
 import com.example.libraryserviceandroidv2.libraryservice.database.entity.GameEntity
 import com.example.libraryserviceandroidv2.libraryservice.gameobjects.GameList
 import com.example.libraryserviceandroidv2.libraryservice.gameobjects.User
+import com.example.libraryserviceandroidv2.libraryservice.model.UserModel
 import com.example.libraryserviceandroidv2.libraryservice.model.games.GameModel
 import com.google.android.material.textfield.TextInputEditText
 import kotlinx.coroutines.Dispatchers
@@ -42,45 +43,24 @@ class MainActivity : AppCompatActivity() {
 
     fun testClick(view: View) {
         GlobalScope.launch(Dispatchers.IO) {
-            var password = findViewById<TextInputEditText>(R.id.passwordInput).text
-            var username = findViewById<TextInputEditText>(R.id.gameNameInput).text
+            var password = findViewById<TextInputEditText>(R.id.passwordInput).text.toString()
+            var username = findViewById<TextInputEditText>(R.id.gameNameInput).text.toString()
 
             libraryServiceGameClient = LibraryServiceGameClientImpl()
 
             var anUser =
-                libraryServiceUserClient.getUser(username.toString(), password.toString())
+                libraryServiceUserClient.getUser(UserModel(username, password))
 
-            User.setID(anUser?.id.toString())
+            if(anUser!!) {
+                var detailsGame = libraryServiceGameClient.getDetailsGame(username)
 
-            var detailsGame = libraryServiceGameClient.getDetailsGame(User.getId().toInt())
+                GameList.setGameList(detailsGame)
 
-            detailsGame.stream().forEach { e -> createGameModel(e) }
+                var intent = Intent(applicationContext, viewActivity::class.java)
 
-            var intent = Intent(applicationContext, viewActivity::class.java)
-
-            startActivity(intent)
+                startActivity(intent)
+            }
         }
-    }
-
-    fun createGameModel(gameModel: GameModel) {
-        var isPreOrdered: Int
-
-        if (gameModel.preOrdered) {
-            isPreOrdered = 0
-        } else {
-            isPreOrdered = 1
-        }
-
-        GameList.getGameList().add(GameEntity(
-            gameModel.id,
-            gameModel.gameName,
-            gameModel.gameGenre,
-            gameModel.platform,
-            gameModel.gameRating,
-            gameModel.releaseDate,
-            gameModel.imageUrl,
-            isPreOrdered
-        ))
     }
 
 }

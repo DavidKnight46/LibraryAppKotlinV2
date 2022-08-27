@@ -79,11 +79,9 @@ class First2Fragment : Fragment() {
             binding.saveButton.isEnabled = false
 
             GlobalScope.launch {
-                var id = GameList.getGameList().last().id
+                var id = GameList.getGameList().last().name
 
                 var gameModel = GameModel(
-                    ++id,
-                    User.getId().toInt(),
                     binding.gameNameInput1.text.toString(),
                     GenreText.getGenre(),
                     PlatformText.getPlatform(),
@@ -117,7 +115,7 @@ class First2Fragment : Fragment() {
 
     private fun saveToDatabase() {
         lifecycleScope.launch {
-            myGameList = libraryServiceGameClient.getDetailsGame(User.getId().toInt())
+            myGameList = libraryServiceGameClient.getDetailsGame("null")
         }
     }
 
