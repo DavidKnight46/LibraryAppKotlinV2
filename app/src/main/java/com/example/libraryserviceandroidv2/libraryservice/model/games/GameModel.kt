@@ -9,6 +9,6 @@ data class GameModel(val name:String,
                      val releaseDate: String){
 
     override fun toString(): String {
-        return "GameModel(name='$name')"
+        return "$name"
     }
 }

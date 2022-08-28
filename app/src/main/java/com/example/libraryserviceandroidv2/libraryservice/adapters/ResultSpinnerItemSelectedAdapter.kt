@@ -4,8 +4,6 @@ import android.content.Context
 import android.view.View
 import android.widget.AdapterView
 import androidx.recyclerview.widget.RecyclerView
-import com.example.libraryserviceandroidv2.libraryservice.database.entity.GameEntity
-import com.example.libraryserviceandroidv2.libraryservice.gameobjects.GameList
 import com.example.libraryserviceandroidv2.libraryservice.model.games.GameModel
 
 class ResultSpinnerItemSelectedAdapter(

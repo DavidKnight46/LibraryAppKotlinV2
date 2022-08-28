@@ -5,7 +5,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import androidx.annotation.RequiresApi
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
@@ -17,10 +16,11 @@ import com.example.libraryserviceandroidv2.libraryservice.adapters.PlatformSpinn
 import com.example.libraryserviceandroidv2.libraryservice.client.game.LibraryServiceGameClientImpl
 import com.example.libraryserviceandroidv2.libraryservice.database.AppDatabase
 import com.example.libraryserviceandroidv2.libraryservice.database.MyDataBaseBuilder
-import com.example.libraryserviceandroidv2.libraryservice.database.entity.GameEntity
-import com.example.libraryserviceandroidv2.libraryservice.gameobjects.*
+import com.example.libraryserviceandroidv2.libraryservice.gameobjects.GameList
+import com.example.libraryserviceandroidv2.libraryservice.gameobjects.GenreText
+import com.example.libraryserviceandroidv2.libraryservice.gameobjects.IsAdded
+import com.example.libraryserviceandroidv2.libraryservice.gameobjects.PlatformText
 import com.example.libraryserviceandroidv2.libraryservice.model.games.GameModel
-import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 
@@ -46,6 +46,8 @@ class First2Fragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         libraryServiceGameClient = LibraryServiceGameClientImpl()
+
+        myGameList = GameList.getGameList()
 
         getActivity()?.setTitle(R.string.editTitle)
 
@@ -79,8 +81,6 @@ class First2Fragment : Fragment() {
             binding.saveButton.isEnabled = false
 
             GlobalScope.launch {
-                var id = GameList.getGameList().last().name
-
                 var gameModel = GameModel(
                     binding.gameNameInput1.text.toString(),
                     GenreText.getGenre(),

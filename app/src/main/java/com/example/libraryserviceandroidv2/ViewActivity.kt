@@ -9,7 +9,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.libraryserviceandroidv2.libraryservice.adapters.CardViewFilterAdapter
 import com.example.libraryserviceandroidv2.libraryservice.adapters.ViewGamesRecyclerAdapter
-import com.example.libraryserviceandroidv2.libraryservice.database.MyDataBaseBuilder
 import com.example.libraryserviceandroidv2.libraryservice.gameobjects.GameList
 import com.example.libraryserviceandroidv2.libraryservice.gameobjects.IsPreOrder
 import kotlinx.coroutines.launch
@@ -53,7 +52,7 @@ class ViewActivity : AppCompatActivity() {
         findViewById.onItemSelectedListener = CardViewFilterAdapter(
             findViewById(R.id.viewFilterResults),
             applicationContext,
-            Collections.emptyList(),//TODO
+            Collections.emptyList(),
             cardviewviewlayout,
             linearLayoutManager,
             IsPreOrder.getIsPreOrder().toInt()

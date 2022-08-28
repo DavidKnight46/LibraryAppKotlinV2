@@ -3,7 +3,6 @@ package com.example.libraryserviceandroidv2.libraryservice.database.entity
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import java.time.LocalDate
 
 @Entity
 data class GameEntity(@PrimaryKey(autoGenerate = true) val id: Int,

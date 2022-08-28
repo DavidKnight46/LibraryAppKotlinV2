@@ -8,7 +8,6 @@ import android.widget.RatingBar
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.libraryserviceandroidv2.R
-import com.example.libraryserviceandroidv2.libraryservice.database.entity.GameEntity
 import com.example.libraryserviceandroidv2.libraryservice.model.games.GameModel
 import com.squareup.picasso.Picasso
 

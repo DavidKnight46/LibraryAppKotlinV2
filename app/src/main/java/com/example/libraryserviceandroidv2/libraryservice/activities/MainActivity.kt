@@ -10,12 +10,8 @@ import androidx.core.view.isVisible
 import com.example.libraryserviceandroidv2.R
 import com.example.libraryserviceandroidv2.libraryservice.client.game.LibraryServiceGameClientImpl
 import com.example.libraryserviceandroidv2.libraryservice.client.user.LibraryServiceUserClientImpl
-import com.example.libraryserviceandroidv2.libraryservice.client.user.UserClient
-import com.example.libraryserviceandroidv2.libraryservice.database.entity.GameEntity
 import com.example.libraryserviceandroidv2.libraryservice.gameobjects.GameList
-import com.example.libraryserviceandroidv2.libraryservice.gameobjects.User
 import com.example.libraryserviceandroidv2.libraryservice.model.UserModel
-import com.example.libraryserviceandroidv2.libraryservice.model.games.GameModel
 import com.google.android.material.textfield.TextInputEditText
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope

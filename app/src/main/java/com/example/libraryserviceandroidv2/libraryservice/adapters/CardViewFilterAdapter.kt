@@ -7,7 +7,6 @@ import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Spinner
 import androidx.recyclerview.widget.RecyclerView
-import com.example.libraryserviceandroidv2.libraryservice.database.entity.GameEntity
 import com.example.libraryserviceandroidv2.libraryservice.model.games.GameModel
 
 class CardViewFilterAdapter(

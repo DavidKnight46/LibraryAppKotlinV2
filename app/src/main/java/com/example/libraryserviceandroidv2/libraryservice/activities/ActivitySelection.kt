@@ -13,7 +13,6 @@ import com.example.libraryserviceandroidv2.R
 import com.example.libraryserviceandroidv2.ViewActivity
 import com.example.libraryserviceandroidv2.databinding.ActivityViewBinding
 import com.example.libraryserviceandroidv2.libraryservice.gameobjects.IsAdded
-import com.google.android.material.snackbar.Snackbar
 
 class viewActivity : AppCompatActivity() {
 
