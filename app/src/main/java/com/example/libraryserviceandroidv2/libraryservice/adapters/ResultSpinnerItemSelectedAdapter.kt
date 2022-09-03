@@ -4,6 +4,7 @@ import android.content.Context
 import android.view.View
 import android.widget.AdapterView
 import androidx.recyclerview.widget.RecyclerView
+import com.example.libraryserviceandroidv2.libraryservice.gameobjects.GameList
 import com.example.libraryserviceandroidv2.libraryservice.model.games.GameModel
 
 class ResultSpinnerItemSelectedAdapter(
@@ -17,10 +18,12 @@ class ResultSpinnerItemSelectedAdapter(
     override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
         var str = parent?.getItemAtPosition(position) as String
 
+        gameList = GameList.getGameList()
+
         if(isGenre == 0) {
             var toList = gameList
                 .filter { e -> e.gameGenre.contentEquals(str) }
-                .filter { e -> e.preOrdered == true }
+                .filter { e -> e.preOrdered == false }
                 .toList()
 
             handleList(toList)

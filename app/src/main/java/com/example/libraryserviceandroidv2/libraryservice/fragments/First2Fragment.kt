@@ -20,6 +20,8 @@ import com.example.libraryserviceandroidv2.libraryservice.gameobjects.*
 import com.example.libraryserviceandroidv2.libraryservice.model.games.GameModel
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
+import java.util.*
+import kotlin.collections.ArrayList
 
 /**
  * A simple [Fragment] subclass as the default destination in the navigation.
@@ -92,28 +94,14 @@ class First2Fragment : Fragment() {
 
                 libraryServiceGameClientImpl.addAnGame( User.getId(), gameModel)
 
-                //clearScreen()
-
                 binding.saveButton.isEnabled = true
             }
         }
     }
 
-    fun clearScreen(){
-        binding.gameNameInput1.text?.clear()
-        binding.imageUrlInput.text?.clear()
-        binding.releaseDateInput.text?.clear()
-    }
-
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
-    }
-
-    private fun saveToDatabase() {
-        lifecycleScope.launch {
-            myGameList = libraryServiceGameClient.getDetailsGame("null")
-        }
     }
 
 }
