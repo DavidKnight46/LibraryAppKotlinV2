@@ -12,9 +12,9 @@ import com.google.android.material.textfield.TextInputEditText
 class EditGamesAdapter(val list: List<GameModel>,
                        var fragment: FragmentContainerView) :  AdapterView.OnItemSelectedListener{
     override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-        var gameModel = list.get(position)
+        var gameModel = list[position]
 
-        setTextInput(fragment.findViewById(R.id.gameNameInput1), gameModel.name)
+        setTextInput(fragment.findViewById(R.id.gameNameInput1), gameModel.gameName)
         setTextInput(fragment.findViewById(R.id.releaseDateInput), gameModel.releaseDate)
         setTextInput(fragment.findViewById(R.id.imageUrlInput), gameModel.imageUrl)
 

@@ -29,9 +29,9 @@ class ViewGamesRecyclerAdapter(val userList: List<GameModel>) : RecyclerView.Ada
         var iGameReleaseDate = p0.itemView.findViewById<TextView>(R.id.gameReleaseDateText)
         var iGameRatingBar = p0.itemView.findViewById<RatingBar>(R.id.ratingBarCard)
 
-        iGameText.setText(userList[p1].name)
+        iGameText.setText(userList[p1].gameName)
         iGamePlatform.setText(userList[p1].platform)
-        iGameGenre.setText(userList[p1].genre)
+        iGameGenre.setText(userList[p1].gameGenre)
         iGameReleaseDate.setText(userList[p1].releaseDate)
         iGameRatingBar.rating = userList[p1].gameRating
 

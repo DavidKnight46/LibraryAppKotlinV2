@@ -19,7 +19,7 @@ class ResultSpinnerItemSelectedAdapter(
 
         if(isGenre == 0) {
             var toList = gameList
-                .filter { e -> e.genre.contentEquals(str) }
+                .filter { e -> e.gameGenre.contentEquals(str) }
                 .filter { e -> e.preOrdered == true }
                 .toList()
 

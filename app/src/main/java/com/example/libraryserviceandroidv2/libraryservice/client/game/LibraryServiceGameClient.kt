@@ -6,7 +6,7 @@ interface LibraryServiceGameClient {
 
     fun getDetailsGame(userName: String): List<GameModel>
 
-    fun addAnGame(gameModel: GameModel)
+    fun addAnGame(userName: String, gameModel: GameModel)
 
     fun updateAnGame(gameModel: GameModel)
 

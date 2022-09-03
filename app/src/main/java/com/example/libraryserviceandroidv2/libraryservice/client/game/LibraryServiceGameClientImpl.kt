@@ -12,8 +12,8 @@ class LibraryServiceGameClientImpl : LibraryServiceGameClient {
             .body()?.stream()?.collect(Collectors.toList()) as ArrayList
     }
 
-    override fun addAnGame(gameModel: GameModel) {
-        return callAddGameAPIEndpoint(gameModel)
+    override fun addAnGame(userName: String, gameModel: GameModel) {
+        return callAddGameAPIEndpoint(userName, gameModel)
     }
 
     override fun updateAnGame(gameModel: GameModel) {
@@ -32,11 +32,11 @@ class LibraryServiceGameClientImpl : LibraryServiceGameClient {
             .execute()
     }
 
-    private fun callAddGameAPIEndpoint(gameModel: GameModel) {
+    private fun callAddGameAPIEndpoint(userName: String, gameModel: GameModel) {
         MyGameRxClient
             .getRxClient()
             .create(MyRxGameApi::class.java)
-            .addAnGame(gameModel.name, gameModel)
+            .addAnGame(userName, gameModel)
             .execute()
     }
 

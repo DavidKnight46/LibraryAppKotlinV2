@@ -11,6 +11,7 @@ import com.example.libraryserviceandroidv2.R
 import com.example.libraryserviceandroidv2.libraryservice.client.game.LibraryServiceGameClientImpl
 import com.example.libraryserviceandroidv2.libraryservice.client.user.LibraryServiceUserClientImpl
 import com.example.libraryserviceandroidv2.libraryservice.gameobjects.GameList
+import com.example.libraryserviceandroidv2.libraryservice.gameobjects.User
 import com.example.libraryserviceandroidv2.libraryservice.model.UserModel
 import com.google.android.material.textfield.TextInputEditText
 import kotlinx.coroutines.Dispatchers
@@ -42,13 +43,15 @@ class MainActivity : AppCompatActivity() {
             var password = findViewById<TextInputEditText>(R.id.passwordInput).text.toString()
             var username = findViewById<TextInputEditText>(R.id.gameNameInput).text.toString()
 
+            User.setID("TestUser1")
+
             libraryServiceGameClient = LibraryServiceGameClientImpl()
 
             var anUser =
-                libraryServiceUserClient.getUser(UserModel(username, password))
+                libraryServiceUserClient.getUser(UserModel("TestUser1", "Password123"))
 
             if(anUser!!) {
-                var detailsGame = libraryServiceGameClient.getDetailsGame(username)
+                var detailsGame = libraryServiceGameClient.getDetailsGame("TestUser1")
 
                 GameList.setGameList(detailsGame)
 

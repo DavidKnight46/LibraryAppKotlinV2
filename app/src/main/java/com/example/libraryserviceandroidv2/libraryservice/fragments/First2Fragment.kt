@@ -16,10 +16,7 @@ import com.example.libraryserviceandroidv2.libraryservice.adapters.PlatformSpinn
 import com.example.libraryserviceandroidv2.libraryservice.client.game.LibraryServiceGameClientImpl
 import com.example.libraryserviceandroidv2.libraryservice.database.AppDatabase
 import com.example.libraryserviceandroidv2.libraryservice.database.MyDataBaseBuilder
-import com.example.libraryserviceandroidv2.libraryservice.gameobjects.GameList
-import com.example.libraryserviceandroidv2.libraryservice.gameobjects.GenreText
-import com.example.libraryserviceandroidv2.libraryservice.gameobjects.IsAdded
-import com.example.libraryserviceandroidv2.libraryservice.gameobjects.PlatformText
+import com.example.libraryserviceandroidv2.libraryservice.gameobjects.*
 import com.example.libraryserviceandroidv2.libraryservice.model.games.GameModel
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
@@ -93,9 +90,9 @@ class First2Fragment : Fragment() {
 
                 var libraryServiceGameClientImpl = LibraryServiceGameClientImpl()
 
-                libraryServiceGameClientImpl.addAnGame(gameModel)
+                libraryServiceGameClientImpl.addAnGame( User.getId(), gameModel)
 
-                clearScreen()
+                //clearScreen()
 
                 binding.saveButton.isEnabled = true
             }
