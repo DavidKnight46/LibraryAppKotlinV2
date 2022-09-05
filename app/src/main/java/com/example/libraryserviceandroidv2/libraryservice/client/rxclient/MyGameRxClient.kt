@@ -11,7 +11,7 @@ object MyGameRxClient {
 
     init {
         retrofit = Retrofit.Builder()
-            .baseUrl("http://Libraryserviceappgameenv-env.eba-x8pqh8r4.eu-west-2.elasticbeanstalk.com/libraryservice/")
+            .baseUrl("http://Libraryserviceappgameenv-env.eba-x8pqh8r4.eu-west-2.elasticbeanstalk.com/libraryservice/gamecontroller/v2/")
             .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
             .addConverterFactory(GsonConverterFactory.create())
             .client(OkHttpClient())

@@ -43,22 +43,24 @@ class MainActivity : AppCompatActivity() {
             var password = findViewById<TextInputEditText>(R.id.passwordInput).text.toString()
             var username = findViewById<TextInputEditText>(R.id.gameNameInput).text.toString()
 
-            User.setID("TestUser1")
+            User.setID(username)
 
             libraryServiceGameClient = LibraryServiceGameClientImpl()
 
             var anUser =
-                libraryServiceUserClient.getUser(UserModel("TestUser1", "Password123"))
+                libraryServiceUserClient.getUser(UserModel(username, password))
 
-            if(anUser!!) {
-                var detailsGame = libraryServiceGameClient.getDetailsGame("TestUser1")
-
+            if(anUser != null) {
+                var detailsGame = libraryServiceGameClient.getDetailsGame(username)
                 GameList.setGameList(detailsGame)
-
-                var intent = Intent(applicationContext, viewActivity::class.java)
-
-                startActivity(intent)
+            } else {
+                //libraryServiceUserClient.createNewUser(UserModel(username, password))
+                libraryServiceGameClient.createGameUserTable(username)
             }
+
+            var intent = Intent(applicationContext, viewActivity::class.java)
+
+            startActivity(intent)
         }
     }
 

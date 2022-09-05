@@ -5,27 +5,30 @@ import retrofit2.Response
 
 class LibraryServiceUserClientImpl : LibraryServiceUserClient {
     override fun getUser(userModel: UserModel): Boolean? {
-        return callUserGetAPIEndpoint(userModel).body()
+        return callGetUserEndpoint(userModel)?.body()
     }
 
-    override fun addUser(userModel: UserModel): Boolean? {
-        return callUserAPIEndpoint(userModel)?.body()
+    override fun createNewUser(userModel: UserModel): Boolean? {
+        return callCreateUserEndpoint(userModel)?.body()
     }
 
     override fun removeUser() {}
 
     override fun changeUsernameAndPassword() {}
 
-    private fun callUserAPIEndpoint(userModel: UserModel): Response<Boolean> {
+    private fun callCreateUserEndpoint(userModel: UserModel): Response<Boolean> {
+        return com.example.libraryserviceandroidv2.libraryservice.client.rxclient.MyUserRxClient
+            .getRxClient()
+            .create(MyUserRxClient::class.java)
+            .createAnUser(userModel)
+            .execute()
+    }
+
+    private fun callGetUserEndpoint(userModel: UserModel): Response<Boolean> {
         return com.example.libraryserviceandroidv2.libraryservice.client.rxclient.MyUserRxClient
             .getRxClient()
             .create(MyUserRxClient::class.java)
             .getAnUser(userModel)
-            .execute()
-    }
-
-    private fun callUserGetAPIEndpoint(userModel: UserModel): Response<Boolean> {
-        return com.example.libraryserviceandroidv2.libraryservice.client.rxclient.MyUserRxClient.getRxClient()
-            .create(MyUserRxClient::class.java).getAnUser(userModel).execute();
+            .execute();
     }
 }

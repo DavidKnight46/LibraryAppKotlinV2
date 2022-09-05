@@ -2,10 +2,14 @@ package com.example.libraryserviceandroidv2.libraryservice.client.game
 
 import com.example.libraryserviceandroidv2.libraryservice.client.rxclient.MyGameRxClient
 import com.example.libraryserviceandroidv2.libraryservice.model.games.GameModel
+import retrofit2.Call
 import retrofit2.Response
 import java.util.stream.Collectors
 
 class LibraryServiceGameClientImpl : LibraryServiceGameClient {
+    override fun createGameUserTable(tableName: String): Boolean {
+        return callCreateGameUserTable(tableName)
+    }
 
     override fun getDetailsGame(userName: String): ArrayList<GameModel> {
         return callGameAPIEndpoint(userName)
@@ -22,6 +26,15 @@ class LibraryServiceGameClientImpl : LibraryServiceGameClient {
 
     override fun deleteAnGame(gameModel: GameModel) {
         return callDeleteAPIEndpoint(gameModel)
+    }
+
+    private fun callCreateGameUserTable(tableName: String) : Boolean{
+        return MyGameRxClient
+            .getRxClient()
+            .create(MyRxGameApi::class.java)
+            .createUserGameTable(tableName)
+            .execute()
+            .isSuccessful;
     }
 
     private fun callGameAPIEndpoint(userName: String): Response<List<GameModel>> {
