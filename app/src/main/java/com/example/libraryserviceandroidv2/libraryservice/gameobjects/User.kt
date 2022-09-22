@@ -2,13 +2,13 @@ package com.example.libraryserviceandroidv2.libraryservice.gameobjects
 
 object User {
 
-    private lateinit var id: String
+    private lateinit var userName: String
 
-    fun setID(id: String){
-        this.id = id
+    fun setUsername(id: String){
+        this.userName = id
     }
 
-    fun getId(): String{
-        return id
+    fun getUserName(): String{
+        return userName
     }
 }

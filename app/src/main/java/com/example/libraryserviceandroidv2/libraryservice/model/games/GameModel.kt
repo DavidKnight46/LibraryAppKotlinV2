@@ -6,7 +6,8 @@ data class GameModel(val gameName:String,
                      val gameRating: Float,
                      val imageUrl: String,
                      val preOrdered: Boolean,
-                     val releaseDate: String){
+                     val releaseDate: String,
+                     val userName: String){
 
     override fun toString(): String {
         return "$gameName"

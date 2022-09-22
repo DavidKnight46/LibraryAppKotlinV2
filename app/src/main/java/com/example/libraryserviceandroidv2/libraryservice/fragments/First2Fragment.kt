@@ -8,7 +8,6 @@ import android.view.ViewGroup
 import androidx.annotation.RequiresApi
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.lifecycleScope
 import com.example.libraryserviceandroidv2.R
 import com.example.libraryserviceandroidv2.databinding.FragmentFirst2Binding
 import com.example.libraryserviceandroidv2.libraryservice.adapters.GenreSpinnerAdapter
@@ -18,9 +17,10 @@ import com.example.libraryserviceandroidv2.libraryservice.database.AppDatabase
 import com.example.libraryserviceandroidv2.libraryservice.database.MyDataBaseBuilder
 import com.example.libraryserviceandroidv2.libraryservice.gameobjects.*
 import com.example.libraryserviceandroidv2.libraryservice.model.games.GameModel
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
-import java.util.*
 import kotlin.collections.ArrayList
 
 /**
@@ -44,13 +44,20 @@ class First2Fragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        libraryServiceGameClient = LibraryServiceGameClientImpl()
+
+        GlobalScope.launch {
+            libraryServiceGameClient = LibraryServiceGameClientImpl()
+            var list = libraryServiceGameClient.getDetailsGame(User.getUserName())
+            GameList.setGameList(list)
+
+            genreSpinnerAdapter = GenreSpinnerAdapter()
+            platformSpinnerAdapter = PlatformSpinnerAdapter()
+        }
 
         myGameList = GameList.getGameList()
+        GameList.setGameList(myGameList)
 
         getActivity()?.setTitle(R.string.editTitle)
-
-        appDatabase = MyDataBaseBuilder.getInstance(requireContext());
 
         genreSpinnerAdapter = GenreSpinnerAdapter()
         platformSpinnerAdapter = PlatformSpinnerAdapter()
@@ -68,35 +75,77 @@ class First2Fragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.delete.isVisible = !IsAdded.getIsAdded()
+        GlobalScope.launch {
+            libraryServiceGameClient = LibraryServiceGameClientImpl()
+            var list = libraryServiceGameClient.getDetailsGame(User.getUserName())
+            GameList.setGameList(list)
 
-        binding.genreSpinner.onItemSelectedListener = genreSpinnerAdapter
-        binding.platFormSpinner.onItemSelectedListener = platformSpinnerAdapter
+            genreSpinnerAdapter = GenreSpinnerAdapter()
+            platformSpinnerAdapter = PlatformSpinnerAdapter()
+        }
 
-        binding.preOrderSwitchAdd.setText("Is Pre-order?")
+            binding.delete.isVisible = !IsAdded.getIsAdded()
 
-        binding.saveButton.setOnClickListener {
+            binding.genreSpinner.onItemSelectedListener = genreSpinnerAdapter
+            binding.platFormSpinner.onItemSelectedListener = platformSpinnerAdapter
 
-            binding.saveButton.isEnabled = false
+            binding.preOrderSwitchAdd.setText("Is Pre-order?")
 
-            GlobalScope.launch {
-                var gameModel = GameModel(
-                    binding.gameNameInput1.text.toString(),
-                    GenreText.getGenre(),
-                    PlatformText.getPlatform(),
-                    binding.ratingBar.rating,
-                    binding.imageUrlInput.text.toString(),
-                    binding.preOrderSwitchAdd.isChecked,
-                    binding.releaseDateInput.text.toString()
-                )
-
+            binding.delete.setOnClickListener {
                 var libraryServiceGameClientImpl = LibraryServiceGameClientImpl()
 
-                libraryServiceGameClientImpl.addAnGame( User.getId(), gameModel)
+                GlobalScope.launch {
+                    libraryServiceGameClientImpl.deleteAnGame(
+                        User.getUserName(),
+                        binding.gameNameInput1.text.toString()
+                    )
 
-                binding.saveButton.isEnabled = true
+                    this.async {  }
+                }
             }
+
+            binding.saveButton.setOnClickListener {
+
+                binding.saveButton.isEnabled = false
+
+                GlobalScope.launch {
+                    var gameModel = createGameModel()
+
+                    var libraryServiceGameClientImpl = LibraryServiceGameClientImpl()
+
+                    if (IsAdded.getIsAdded()) {
+                        libraryServiceGameClientImpl.addAnGame(gameModel)
+                    } else {
+                        libraryServiceGameClientImpl.updateAnGame(gameModel)
+                    }
+
+                    binding.saveButton.isEnabled = true
+                }
+            }
+
+    }
+
+    private fun createGameModel() : GameModel{
+        return GameModel(
+            binding.gameNameInput1.text.toString(),
+            GenreText.getGenre(),
+            PlatformText.getPlatform(),
+            binding.ratingBar.rating,
+            binding.imageUrlInput.text.toString(),
+            binding.preOrderSwitchAdd.isChecked,
+            binding.releaseDateInput.text.toString(),
+            User.getUserName()
+        )
+    }
+
+    private fun setPlatform(platform: String) : Int {
+        var result : Int = 0
+
+        when(platform){
+            "PS1" -> result = 1
         }
+
+        return result
     }
 
     override fun onDestroyView() {

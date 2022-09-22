@@ -16,16 +16,16 @@ class LibraryServiceGameClientImpl : LibraryServiceGameClient {
             .body()?.stream()?.collect(Collectors.toList()) as ArrayList
     }
 
-    override fun addAnGame(userName: String, gameModel: GameModel) {
-        return callAddGameAPIEndpoint(userName, gameModel)
+    override fun addAnGame(gameModel: GameModel) {
+        return callAddGameAPIEndpoint(gameModel)
     }
 
     override fun updateAnGame(gameModel: GameModel) {
         callUpdateAPIEndpoint(gameModel);
     }
 
-    override fun deleteAnGame(gameModel: GameModel) {
-        return callDeleteAPIEndpoint(gameModel)
+    override fun deleteAnGame(userName: String, gameName : String) {
+        return callDeleteAPIEndpoint(userName, gameName)
     }
 
     private fun callCreateGameUserTable(tableName: String) : Boolean{
@@ -34,7 +34,7 @@ class LibraryServiceGameClientImpl : LibraryServiceGameClient {
             .create(MyRxGameApi::class.java)
             .createUserGameTable(tableName)
             .execute()
-            .isSuccessful;
+            .isSuccessful
     }
 
     private fun callGameAPIEndpoint(userName: String): Response<List<GameModel>> {
@@ -45,16 +45,16 @@ class LibraryServiceGameClientImpl : LibraryServiceGameClient {
             .execute()
     }
 
-    private fun callAddGameAPIEndpoint(userName: String, gameModel: GameModel) {
+    private fun callAddGameAPIEndpoint(gameModel: GameModel) {
         MyGameRxClient
             .getRxClient()
             .create(MyRxGameApi::class.java)
-            .addAnGame(userName, gameModel)
+            .addAnGame(gameModel)
             .execute()
     }
 
-    private fun callDeleteAPIEndpoint(gameModel: GameModel) {
-        MyGameRxClient.getRxClient().create(MyRxGameApi::class.java).deleteAnGame(gameModel)
+    private fun callDeleteAPIEndpoint(userName: String, gameName : String) {
+        MyGameRxClient.getRxClient().create(MyRxGameApi::class.java).deleteAnGame(userName, gameName)
             .execute()
     }
 

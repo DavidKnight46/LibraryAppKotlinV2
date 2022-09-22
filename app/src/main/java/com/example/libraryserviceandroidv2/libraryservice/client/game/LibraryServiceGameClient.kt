@@ -9,10 +9,10 @@ interface LibraryServiceGameClient {
 
     fun getDetailsGame(userName: String): List<GameModel>
 
-    fun addAnGame(userName: String, gameModel: GameModel)
+    fun addAnGame(gameModel: GameModel)
 
     fun updateAnGame(gameModel: GameModel)
 
-    fun deleteAnGame(gameModel: GameModel)
+    fun deleteAnGame(userName: String, gameName : String)
 
 }

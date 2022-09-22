@@ -22,5 +22,4 @@ object MyGameRxClient {
         return retrofit
     }
 
-
 }

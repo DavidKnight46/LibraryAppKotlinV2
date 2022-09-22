@@ -12,13 +12,12 @@ interface MyRxGameApi {
     @GET("getAllGames/{userName}")
     fun GetAllGames(@Path("userName") userName: String): Call<List<GameModel>>
 
-    @POST("addNewGame/{id}")
-    fun addAnGame(@Path("id") id: String,
-                  @Body gameModel: GameModel): Call<Void>
+    @POST("addNewGame")
+    fun addAnGame(@Body gameModel: GameModel): Call<Void>
 
     @PUT("updateGame")
     fun updateAnGame(@Body gameModel: GameModel): Call<Void>
 
-    @DELETE("deleteGame")
-    fun deleteAnGame(@Body gameModel: GameModel): Call<Void>
+    @DELETE("deleteGame/{userName}/{gameName}")
+    fun deleteAnGame(@Path("userName") userName: String?, @Path("gameName") gameName: String?): Call<Void>
 }
