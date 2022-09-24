@@ -5,7 +5,7 @@ data class GameModel(val gameName:String,
                      val platform: String,
                      val gameRating: Float,
                      val imageUrl: String,
-                     val preOrdered: Boolean,
+                     val isPreOrdered: Boolean,
                      val releaseDate: String,
                      val userName: String){
 

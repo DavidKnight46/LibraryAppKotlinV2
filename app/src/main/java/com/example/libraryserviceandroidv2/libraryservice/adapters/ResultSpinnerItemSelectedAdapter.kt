@@ -23,14 +23,14 @@ class ResultSpinnerItemSelectedAdapter(
         if(isGenre == 0) {
             var toList = gameList
                 .filter { e -> e.gameGenre.contentEquals(str) }
-                .filter { e -> e.preOrdered == false }
+                .filter { e -> e.isPreOrdered == false }
                 .toList()
 
             handleList(toList)
         } else {
             var toList = gameList
                 .filter { e -> e.platform.contentEquals(str) }
-                .filter { e -> e.preOrdered == false }
+                .filter { e -> e.isPreOrdered == false }
 
             handleList(toList)
         }

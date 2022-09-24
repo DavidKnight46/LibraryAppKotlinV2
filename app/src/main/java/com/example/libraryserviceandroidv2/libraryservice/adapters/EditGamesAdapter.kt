@@ -19,7 +19,7 @@ class EditGamesAdapter(val list: List<GameModel>,
         setTextInput(fragment.findViewById(R.id.imageUrlInput), gameModel.imageUrl)
 
         fragment.findViewById<RatingBar>(R.id.ratingBar).rating = gameModel.gameRating
-        fragment.findViewById<Switch>(R.id.preOrderSwitchAdd).isChecked = gameModel.preOrdered
+        fragment.findViewById<Switch>(R.id.preOrderSwitchAdd).isChecked = gameModel.isPreOrdered
     }
 
     override fun onNothingSelected(parent: AdapterView<*>?) {
