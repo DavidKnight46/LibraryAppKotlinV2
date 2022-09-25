@@ -30,7 +30,6 @@ class First2Fragment : Fragment() {
 
     private lateinit var genreSpinnerAdapter: GenreSpinnerAdapter
     private lateinit var platformSpinnerAdapter: PlatformSpinnerAdapter
-    private lateinit var appDatabase: AppDatabase
     private lateinit var libraryServiceGameClient: LibraryServiceGameClientImpl
     private lateinit var myGameList : ArrayList<GameModel>
 
@@ -66,6 +65,7 @@ class First2Fragment : Fragment() {
 
         if(!IsAdded.getIsAdded()) {
             _binding?.saveButton?.text = resources.getText(R.string.editGame)
+            _binding?.gameNameInput1?.isEnabled = false
         }
 
         return binding.root
@@ -99,8 +99,6 @@ class First2Fragment : Fragment() {
                         User.getUserName(),
                         binding.gameNameInput1.text.toString()
                     )
-
-                    this.async {  }
                 }
             }
 

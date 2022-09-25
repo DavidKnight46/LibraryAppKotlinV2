@@ -8,12 +8,17 @@ import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
 import com.example.libraryserviceandroidv2.R
+import com.example.libraryserviceandroidv2.libraryservice.client.firebase.FirebaseClient
 import com.example.libraryserviceandroidv2.libraryservice.client.game.LibraryServiceGameClientImpl
 import com.example.libraryserviceandroidv2.libraryservice.client.user.LibraryServiceUserClientImpl
 import com.example.libraryserviceandroidv2.libraryservice.gameobjects.GameList
 import com.example.libraryserviceandroidv2.libraryservice.gameobjects.User
 import com.example.libraryserviceandroidv2.libraryservice.model.UserModel
 import com.google.android.material.textfield.TextInputEditText
+import com.google.firebase.FirebaseApp
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
@@ -23,6 +28,7 @@ class MainActivity : AppCompatActivity() {
     lateinit var loginButton: Button
     lateinit var libraryServiceGameClient: LibraryServiceGameClientImpl
     lateinit var libraryServiceUserClient: LibraryServiceUserClientImpl
+    private lateinit var fbClient: FirebaseClient
 
     @SuppressLint("RestrictedApi")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -47,14 +53,13 @@ class MainActivity : AppCompatActivity() {
 
             libraryServiceGameClient = LibraryServiceGameClientImpl()
 
-            var anUser =
-                libraryServiceUserClient.getUser(UserModel(username, password))
+            fbClient = FirebaseClient(Firebase.auth)
 
-            if(anUser == true) {
+            if(!fbClient.checkUserAlready(username, password)){
+                fbClient.createNewUser(username, password)
+            } else {
                 var detailsGame = libraryServiceGameClient.getDetailsGame(username)
                 GameList.setGameList(detailsGame)
-            } else {
-                libraryServiceUserClient.createNewUser(UserModel(username, password))
             }
 
             var intent = Intent(applicationContext, viewActivity::class.java)
