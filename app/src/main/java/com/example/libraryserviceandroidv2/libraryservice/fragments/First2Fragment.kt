@@ -131,16 +131,6 @@ class First2Fragment : Fragment() {
         )
     }
 
-    private fun setPlatform(platform: String) : Int {
-        var result : Int = 0
-
-        when(platform){
-            "PS1" -> result = 1
-        }
-
-        return result
-    }
-
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null

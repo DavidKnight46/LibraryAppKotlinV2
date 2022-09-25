@@ -5,10 +5,11 @@ import com.google.firebase.auth.FirebaseAuth
 class FirebaseClient(val firebaseAuth: FirebaseAuth) {
 
     fun checkUserAlready(email: String, password: String): Boolean {
-        return firebaseAuth.signInWithEmailAndPassword(email, password).isSuccessful
-    }
 
-    fun createNewUser(email: String, password: String): Boolean{
-        return firebaseAuth.createUserWithEmailAndPassword(email, password).isSuccessful
+
+            return firebaseAuth.signInWithEmailAndPassword(
+                email,
+                password
+            ).isSuccessful
     }
 }
