@@ -1,7 +1,6 @@
 package com.example.libraryserviceandroidv2.libraryservice.client.game
 
 import com.example.libraryserviceandroidv2.libraryservice.model.games.GameModel
-import retrofit2.Call
 
 interface LibraryServiceGameClient {
 

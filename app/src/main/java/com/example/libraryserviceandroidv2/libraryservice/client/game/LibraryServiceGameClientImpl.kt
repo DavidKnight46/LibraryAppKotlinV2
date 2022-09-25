@@ -2,7 +2,6 @@ package com.example.libraryserviceandroidv2.libraryservice.client.game
 
 import com.example.libraryserviceandroidv2.libraryservice.client.rxclient.MyGameRxClient
 import com.example.libraryserviceandroidv2.libraryservice.model.games.GameModel
-import retrofit2.Call
 import retrofit2.Response
 import java.util.stream.Collectors
 

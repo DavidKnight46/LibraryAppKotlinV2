@@ -13,10 +13,7 @@ import com.example.libraryserviceandroidv2.libraryservice.client.game.LibrarySer
 import com.example.libraryserviceandroidv2.libraryservice.client.user.LibraryServiceUserClientImpl
 import com.example.libraryserviceandroidv2.libraryservice.gameobjects.GameList
 import com.example.libraryserviceandroidv2.libraryservice.gameobjects.User
-import com.example.libraryserviceandroidv2.libraryservice.model.UserModel
 import com.google.android.material.textfield.TextInputEditText
-import com.google.firebase.FirebaseApp
-import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import kotlinx.coroutines.Dispatchers

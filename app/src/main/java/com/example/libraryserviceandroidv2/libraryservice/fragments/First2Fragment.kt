@@ -13,15 +13,10 @@ import com.example.libraryserviceandroidv2.databinding.FragmentFirst2Binding
 import com.example.libraryserviceandroidv2.libraryservice.adapters.GenreSpinnerAdapter
 import com.example.libraryserviceandroidv2.libraryservice.adapters.PlatformSpinnerAdapter
 import com.example.libraryserviceandroidv2.libraryservice.client.game.LibraryServiceGameClientImpl
-import com.example.libraryserviceandroidv2.libraryservice.database.AppDatabase
-import com.example.libraryserviceandroidv2.libraryservice.database.MyDataBaseBuilder
 import com.example.libraryserviceandroidv2.libraryservice.gameobjects.*
 import com.example.libraryserviceandroidv2.libraryservice.model.games.GameModel
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
-import kotlin.collections.ArrayList
 
 /**
  * A simple [Fragment] subclass as the default destination in the navigation.
