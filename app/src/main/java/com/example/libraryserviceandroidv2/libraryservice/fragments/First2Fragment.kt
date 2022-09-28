@@ -26,7 +26,7 @@ class First2Fragment : Fragment() {
     private lateinit var genreSpinnerAdapter: GenreSpinnerAdapter
     private lateinit var platformSpinnerAdapter: PlatformSpinnerAdapter
     private lateinit var libraryServiceGameClient: LibraryServiceGameClientImpl
-    private lateinit var myGameList : ArrayList<GameModel>
+    private lateinit var myGameList: ArrayList<GameModel>
 
     private var _binding: FragmentFirst2Binding? = null
 
@@ -49,7 +49,7 @@ class First2Fragment : Fragment() {
         genreSpinnerAdapter = GenreSpinnerAdapter(_binding!!.genreSpinner)
         platformSpinnerAdapter = PlatformSpinnerAdapter(_binding!!.platFormSpinner)
 
-        if(!IsAdded.getIsAdded()) {
+        if (!IsAdded.getIsAdded()) {
             _binding?.saveButton?.text = resources.getText(R.string.editGame)
             _binding?.gameNameInput1?.isEnabled = false
         }
@@ -61,46 +61,46 @@ class First2Fragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-            binding.delete.isVisible = !IsAdded.getIsAdded()
+        binding.delete.isVisible = !IsAdded.getIsAdded()
 
-            binding.genreSpinner.onItemSelectedListener = genreSpinnerAdapter
-            binding.platFormSpinner.onItemSelectedListener = platformSpinnerAdapter
+        binding.genreSpinner.onItemSelectedListener = genreSpinnerAdapter
+        binding.platFormSpinner.onItemSelectedListener = platformSpinnerAdapter
 
-            binding.preOrderSwitchAdd.setText("Is Pre-order?")
+        binding.preOrderSwitchAdd.setText("Is Pre-order?")
 
-            binding.delete.setOnClickListener {
+        binding.delete.setOnClickListener {
+            var libraryServiceGameClientImpl = LibraryServiceGameClientImpl()
+
+            GlobalScope.launch {
+                libraryServiceGameClientImpl.deleteAnGame(
+                    User.getUserName(),
+                    binding.gameNameInput1.text.toString()
+                )
+            }
+        }
+
+        binding.saveButton.setOnClickListener {
+
+            binding.saveButton.isEnabled = false
+
+            GlobalScope.launch {
+                var gameModel = createGameModel()
+
                 var libraryServiceGameClientImpl = LibraryServiceGameClientImpl()
 
-                GlobalScope.launch {
-                    libraryServiceGameClientImpl.deleteAnGame(
-                        User.getUserName(),
-                        binding.gameNameInput1.text.toString()
-                    )
+                if (IsAdded.getIsAdded()) {
+                    libraryServiceGameClientImpl.addAnGame(gameModel)
+                } else {
+                    libraryServiceGameClientImpl.updateAnGame(gameModel)
                 }
+
+                binding.saveButton.isEnabled = true
             }
-
-            binding.saveButton.setOnClickListener {
-
-                binding.saveButton.isEnabled = false
-
-                GlobalScope.launch {
-                    var gameModel = createGameModel()
-
-                    var libraryServiceGameClientImpl = LibraryServiceGameClientImpl()
-
-                    if (IsAdded.getIsAdded()) {
-                        libraryServiceGameClientImpl.addAnGame(gameModel)
-                    } else {
-                        libraryServiceGameClientImpl.updateAnGame(gameModel)
-                    }
-
-                    binding.saveButton.isEnabled = true
-                }
-            }
+        }
 
     }
 
-    private fun createGameModel() : GameModel{
+    private fun createGameModel(): GameModel {
         return GameModel(
             binding.gameNameInput1.text.toString(),
             GenreText.getGenre(),

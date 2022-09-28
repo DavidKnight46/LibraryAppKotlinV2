@@ -7,9 +7,9 @@ class FirebaseClient(val firebaseAuth: FirebaseAuth) {
     fun checkUserAlready(email: String, password: String): Boolean {
 
 
-            return firebaseAuth.signInWithEmailAndPassword(
-                email,
-                password
-            ).isSuccessful
+        return firebaseAuth.signInWithEmailAndPassword(
+            email,
+            password
+        ).isSuccessful
     }
 }

@@ -7,7 +7,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 object MyGameRxClient {
 
-    private var retrofit : Retrofit
+    private var retrofit: Retrofit
 
     init {
         retrofit = Retrofit.Builder()
@@ -18,7 +18,7 @@ object MyGameRxClient {
             .build()
     }
 
-    fun getRxClient(): Retrofit{
+    fun getRxClient(): Retrofit {
         return retrofit
     }
 

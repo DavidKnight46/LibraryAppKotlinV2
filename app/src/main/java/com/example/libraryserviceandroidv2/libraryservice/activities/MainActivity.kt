@@ -52,7 +52,7 @@ class MainActivity : AppCompatActivity() {
 
             fbClient = FirebaseClient(Firebase.auth)
 
-            if(!fbClient.checkUserAlready(username, password)) {
+            if (!fbClient.checkUserAlready(username, password)) {
                 var detailsGame = libraryServiceGameClient.getDetailsGame(username)
                 GameList.setGameList(detailsGame)
             } else {

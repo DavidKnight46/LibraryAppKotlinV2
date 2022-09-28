@@ -10,8 +10,10 @@ import com.example.libraryserviceandroidv2.R
 import com.example.libraryserviceandroidv2.libraryservice.model.games.GameModel
 import com.google.android.material.textfield.TextInputEditText
 
-class EditGamesAdapter(val list: List<GameModel>,
-                       var fragment: FragmentContainerView) :  AdapterView.OnItemSelectedListener{
+class EditGamesAdapter(
+    val list: List<GameModel>,
+    var fragment: FragmentContainerView
+) : AdapterView.OnItemSelectedListener {
     override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
         var gameModel = list[position]
 
@@ -22,42 +24,44 @@ class EditGamesAdapter(val list: List<GameModel>,
         fragment.findViewById<RatingBar>(R.id.ratingBar).rating = gameModel.gameRating
         fragment.findViewById<Switch>(R.id.preOrderSwitchAdd).isChecked = gameModel.isPreOrdered
 
-        fragment.findViewById<Spinner>(R.id.platFormSpinner).setSelection(setPlatformSpinnerInt(gameModel))
-        fragment.findViewById<Spinner>(R.id.genreSpinner).setSelection(setGenreSpinnerInt(gameModel))
+        fragment.findViewById<Spinner>(R.id.platFormSpinner)
+            .setSelection(setPlatformSpinnerInt(gameModel))
+        fragment.findViewById<Spinner>(R.id.genreSpinner)
+            .setSelection(setGenreSpinnerInt(gameModel))
     }
 
     override fun onNothingSelected(parent: AdapterView<*>?) {
         println("smurf")
     }
 
-    private fun setTextInput(inputEdit : TextInputEditText, text: String){
+    private fun setTextInput(inputEdit: TextInputEditText, text: String) {
         inputEdit.setText(text)
     }
 
-    private fun setPlatformSpinnerInt(gameModel: GameModel): Int{
-        if(gameModel.platform == "PS5"){
+    private fun setPlatformSpinnerInt(gameModel: GameModel): Int {
+        if (gameModel.platform == "PS5") {
             return 4
-        }else if(gameModel.platform == "PS4"){
+        } else if (gameModel.platform == "PS4") {
             return 3
-        }else if(gameModel.platform == "PS3"){
+        } else if (gameModel.platform == "PS3") {
             return 2
-        }else if(gameModel.platform == "PS2"){
+        } else if (gameModel.platform == "PS2") {
             return 1
-        }else {
+        } else {
             return 0
         }
     }
 
-    private fun setGenreSpinnerInt(gameModel: GameModel) : Int{
-        if(gameModel.gameGenre == "RTS") {
+    private fun setGenreSpinnerInt(gameModel: GameModel): Int {
+        if (gameModel.gameGenre == "RTS") {
             return 4
-        }else if(gameModel.gameGenre == "Fighting"){
+        } else if (gameModel.gameGenre == "Fighting") {
             return 3
-        }else if(gameModel.gameGenre == "FPS"){
+        } else if (gameModel.gameGenre == "FPS") {
             return 2
-        }else if(gameModel.gameGenre == "RPG"){
+        } else if (gameModel.gameGenre == "RPG") {
             return 1
-        }else {
+        } else {
             return 0
         }
     }

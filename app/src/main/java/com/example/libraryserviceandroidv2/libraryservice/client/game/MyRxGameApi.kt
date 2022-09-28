@@ -7,7 +7,7 @@ import retrofit2.http.*
 interface MyRxGameApi {
 
     @POST("createUserGameTable/{tableName}")
-    fun createUserGameTable(@Path("tableName") tableName: String) : Call<Boolean>
+    fun createUserGameTable(@Path("tableName") tableName: String): Call<Boolean>
 
     @GET("getAllGames/{userName}")
     fun GetAllGames(@Path("userName") userName: String): Call<List<GameModel>>
@@ -19,5 +19,8 @@ interface MyRxGameApi {
     fun updateAnGame(@Body gameModel: GameModel): Call<Void>
 
     @DELETE("deleteGame/{userName}/{gameName}")
-    fun deleteAnGame(@Path("userName") userName: String?, @Path("gameName") gameName: String?): Call<Void>
+    fun deleteAnGame(
+        @Path("userName") userName: String?,
+        @Path("gameName") gameName: String?
+    ): Call<Void>
 }

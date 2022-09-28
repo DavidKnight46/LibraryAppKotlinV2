@@ -23,11 +23,11 @@ class LibraryServiceGameClientImpl : LibraryServiceGameClient {
         callUpdateAPIEndpoint(gameModel);
     }
 
-    override fun deleteAnGame(userName: String, gameName : String) {
+    override fun deleteAnGame(userName: String, gameName: String) {
         return callDeleteAPIEndpoint(userName, gameName)
     }
 
-    private fun callCreateGameUserTable(tableName: String) : Boolean{
+    private fun callCreateGameUserTable(tableName: String): Boolean {
         return MyGameRxClient
             .getRxClient()
             .create(MyRxGameApi::class.java)
@@ -52,12 +52,13 @@ class LibraryServiceGameClientImpl : LibraryServiceGameClient {
             .execute()
     }
 
-    private fun callDeleteAPIEndpoint(userName: String, gameName : String) {
-        MyGameRxClient.getRxClient().create(MyRxGameApi::class.java).deleteAnGame(userName, gameName)
+    private fun callDeleteAPIEndpoint(userName: String, gameName: String) {
+        MyGameRxClient.getRxClient().create(MyRxGameApi::class.java)
+            .deleteAnGame(userName, gameName)
             .execute()
     }
 
-    private fun callUpdateAPIEndpoint(gameModel: GameModel){
+    private fun callUpdateAPIEndpoint(gameModel: GameModel) {
         MyGameRxClient.getRxClient().create(MyRxGameApi::class.java).updateAnGame(gameModel)
             .execute()
     }

@@ -11,7 +11,8 @@ import com.example.libraryserviceandroidv2.R
 import com.example.libraryserviceandroidv2.libraryservice.model.games.GameModel
 import com.squareup.picasso.Picasso
 
-class ViewGamesRecyclerAdapter(val userList: List<GameModel>) : RecyclerView.Adapter<ViewGamesRecyclerAdapter.ViewHolder>() {
+class ViewGamesRecyclerAdapter(val userList: List<GameModel>) :
+    RecyclerView.Adapter<ViewGamesRecyclerAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(p0: ViewGroup, p1: Int): ViewHolder {
         val v = LayoutInflater.from(p0?.context).inflate(R.layout.cardviewlayout, p0, false)
@@ -39,7 +40,7 @@ class ViewGamesRecyclerAdapter(val userList: List<GameModel>) : RecyclerView.Ada
             .get()
             .load(userList[p1].imageUrl)
             .placeholder(R.drawable.download)
-            .resize(425,425)
+            .resize(425, 425)
             .into(p0.itemView.findViewById<ImageView>(R.id.gameimage))
 
     }

@@ -4,11 +4,11 @@ object GenreText {
 
     private lateinit var str: String
 
-    fun setGenre(string: String){
+    fun setGenre(string: String) {
         str = string
     }
 
-    fun getGenre(): String{
+    fun getGenre(): String {
         return str
     }
 }

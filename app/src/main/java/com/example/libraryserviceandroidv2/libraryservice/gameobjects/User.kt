@@ -4,11 +4,11 @@ object User {
 
     private lateinit var userName: String
 
-    fun setUsername(id: String){
+    fun setUsername(id: String) {
         this.userName = id
     }
 
-    fun getUserName(): String{
+    fun getUserName(): String {
         return userName
     }
 }

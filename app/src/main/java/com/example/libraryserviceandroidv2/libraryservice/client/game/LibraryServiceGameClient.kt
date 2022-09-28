@@ -12,6 +12,6 @@ interface LibraryServiceGameClient {
 
     fun updateAnGame(gameModel: GameModel)
 
-    fun deleteAnGame(userName: String, gameName : String)
+    fun deleteAnGame(userName: String, gameName: String)
 
 }

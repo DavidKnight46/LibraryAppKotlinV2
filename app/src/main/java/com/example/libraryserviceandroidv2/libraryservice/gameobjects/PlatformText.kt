@@ -4,11 +4,11 @@ object PlatformText {
 
     private lateinit var str: String
 
-    fun setPlatform(string: String){
+    fun setPlatform(string: String) {
         str = string
     }
 
-    fun getPlatform(): String{
+    fun getPlatform(): String {
         return str
     }
 }

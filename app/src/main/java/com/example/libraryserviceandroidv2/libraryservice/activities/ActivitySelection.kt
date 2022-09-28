@@ -38,7 +38,7 @@ class viewActivity : AppCompatActivity() {
                 || super.onSupportNavigateUp()
     }
 
-    fun onAddClick(view: View){
+    fun onAddClick(view: View) {
         var intent = Intent(this, AddActivity::class.java)
 
         IsAdded.setIsAdded(true)
@@ -46,7 +46,7 @@ class viewActivity : AppCompatActivity() {
         startActivity(intent)
     }
 
-    fun onEditCLick(view: View){
+    fun onEditCLick(view: View) {
         var intent = Intent(this, EditActivity::class.java)
 
         IsAdded.setIsAdded(false)
@@ -54,7 +54,7 @@ class viewActivity : AppCompatActivity() {
         startActivity(intent)
     }
 
-    fun onViewCLick(view: View){
+    fun onViewCLick(view: View) {
         var intent = Intent(this, ViewActivity::class.java)
 
         startActivity(intent)

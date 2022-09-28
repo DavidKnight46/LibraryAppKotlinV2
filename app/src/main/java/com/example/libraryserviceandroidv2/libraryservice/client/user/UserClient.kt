@@ -11,12 +11,12 @@ class UserClient {
 
     var logger = Logger.getLogger("UserClient")
 
-    fun checkUser(user: String, password: String): Boolean{
+    fun checkUser(user: String, password: String): Boolean {
         //callEndpoint(user, password)
         return true
     }
 
-    private fun callEndpoint(user: String, password: String){
+    private fun callEndpoint(user: String, password: String) {
         try {
             var uri = String.format(
                 "http://localhost:8080/libraryservice/user/checkUser?userName=%s&password=%s",
@@ -28,9 +28,9 @@ class UserClient {
             do {
                 var content = execute.entity.content
 
-            }while(content.available() != 0)
+            } while (content.available() != 0)
 
-        } catch (e: URISyntaxException){
+        } catch (e: URISyntaxException) {
             logger.log(Level.SEVERE, "Unable to call endpoint")
         }
 

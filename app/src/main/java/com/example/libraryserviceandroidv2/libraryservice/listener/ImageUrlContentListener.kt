@@ -17,7 +17,7 @@ class ImageUrlContentListener : OnReceiveContentListener {
             .get()
             .load(payload.linkUri?.path)
             .placeholder(R.drawable.download)
-            .resize(500,500)
+            .resize(500, 500)
             .into(view.findViewById<ImageView>(R.id.image))
 
         return payload

@@ -6,7 +6,7 @@ import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 
 object MyUserRxClient {
-    private var retrofit : Retrofit
+    private var retrofit: Retrofit
 
     init {
         retrofit = Retrofit.Builder()

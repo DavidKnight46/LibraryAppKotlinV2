@@ -24,13 +24,27 @@ class CardViewFilterAdapter(
             resultSpinner.adapter =
                 createAdapter(arrayOf("Action/Adventure", "RPG", "FPS", "Fighting", "RTS"))
 
-            resultSpinner.onItemSelectedListener = ResultSpinnerItemSelectedAdapter(gameList, recyclerView, context, layoutManager, 0, isPreOrder)
+            resultSpinner.onItemSelectedListener = ResultSpinnerItemSelectedAdapter(
+                gameList,
+                recyclerView,
+                context,
+                layoutManager,
+                0,
+                isPreOrder
+            )
 
         } else if (type.contentEquals("Platform")) {
             resultSpinner.adapter =
                 createAdapter(arrayOf("PS1", "PS2", "PS3", "PS4", "PS5", "PSP", "PSVita"))
 
-            resultSpinner.onItemSelectedListener = ResultSpinnerItemSelectedAdapter(gameList, recyclerView, context, layoutManager, 1, isPreOrder)
+            resultSpinner.onItemSelectedListener = ResultSpinnerItemSelectedAdapter(
+                gameList,
+                recyclerView,
+                context,
+                layoutManager,
+                1,
+                isPreOrder
+            )
         }
     }
 
