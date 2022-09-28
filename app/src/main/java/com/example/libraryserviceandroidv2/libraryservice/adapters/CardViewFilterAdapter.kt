@@ -15,7 +15,7 @@ class CardViewFilterAdapter(
     var gameList: List<GameModel>,
     var recyclerView: RecyclerView,
     var layoutManager: RecyclerView.LayoutManager,
-    var isPreOrder: Int
+    var isPreOrder: Boolean
 ) : AdapterView.OnItemSelectedListener {
     override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
         var type = parent?.getItemAtPosition(position) as String

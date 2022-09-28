@@ -9,17 +9,30 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.libraryserviceandroidv2.libraryservice.adapters.CardViewFilterAdapter
 import com.example.libraryserviceandroidv2.libraryservice.adapters.ViewGamesRecyclerAdapter
+import com.example.libraryserviceandroidv2.libraryservice.client.game.LibraryServiceGameClientImpl
 import com.example.libraryserviceandroidv2.libraryservice.gameobjects.GameList
 import com.example.libraryserviceandroidv2.libraryservice.gameobjects.IsPreOrder
+import com.example.libraryserviceandroidv2.libraryservice.gameobjects.User
+import com.example.libraryserviceandroidv2.libraryservice.model.games.GameModel
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
 import java.util.*
 
 class ViewActivity : AppCompatActivity() {
 
-    lateinit var isPreOrder: Integer
+    private lateinit var libraryServiceGameClientImpl: LibraryServiceGameClientImpl
+    private lateinit var gameList : List<GameModel>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        libraryServiceGameClientImpl = LibraryServiceGameClientImpl()
+
+        GlobalScope.launch {
+            gameList = libraryServiceGameClientImpl.getDetailsGame(User.getUserName())
+        }
 
         setContentView(R.layout.cardviewgameslayout)
 
@@ -29,6 +42,7 @@ class ViewActivity : AppCompatActivity() {
         preOrderSwitch.setOnClickListener {
             if(preOrderSwitch.isChecked){
                 IsPreOrder.setIsPreOrder(Integer(0))
+                foo()
             }
 
             lifecycleScope.launch {
@@ -49,18 +63,19 @@ class ViewActivity : AppCompatActivity() {
             LinearLayoutManager(applicationContext, LinearLayoutManager.VERTICAL, false)
 
         var findViewById = findViewById<Spinner>(R.id.viewFilterTypes)
+        var isPreOrder = findViewById<Switch>(R.id.preOrderSwitch)
+
         findViewById.onItemSelectedListener = CardViewFilterAdapter(
             findViewById(R.id.viewFilterResults),
             applicationContext,
-            Collections.emptyList(),
+            gameList,
             cardviewviewlayout,
             linearLayoutManager,
-            IsPreOrder.getIsPreOrder().toInt()
+            isPreOrder.isChecked
         )
 
         cardviewviewlayout.layoutManager = linearLayoutManager
-        cardviewviewlayout.adapter = ViewGamesRecyclerAdapter(GameList.getGameList())
+
+        cardviewviewlayout.adapter = ViewGamesRecyclerAdapter(gameList)
     }
-
-
 }

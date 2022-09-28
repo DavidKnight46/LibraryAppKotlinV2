@@ -25,7 +25,6 @@ class First2Fragment : Fragment() {
 
     private lateinit var genreSpinnerAdapter: GenreSpinnerAdapter
     private lateinit var platformSpinnerAdapter: PlatformSpinnerAdapter
-    private lateinit var libraryServiceGameClient: LibraryServiceGameClientImpl
     private lateinit var myGameList: ArrayList<GameModel>
 
     private var _binding: FragmentFirst2Binding? = null
