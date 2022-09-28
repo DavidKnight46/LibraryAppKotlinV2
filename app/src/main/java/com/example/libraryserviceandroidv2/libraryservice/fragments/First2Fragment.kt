@@ -39,24 +39,15 @@ class First2Fragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-        GlobalScope.launch {
-            libraryServiceGameClient = LibraryServiceGameClientImpl()
-            var list = libraryServiceGameClient.getDetailsGame(User.getUserName())
-            GameList.setGameList(list)
-
-            genreSpinnerAdapter = GenreSpinnerAdapter()
-            platformSpinnerAdapter = PlatformSpinnerAdapter()
-        }
-
         myGameList = GameList.getGameList()
         GameList.setGameList(myGameList)
 
         getActivity()?.setTitle(R.string.editTitle)
 
-        genreSpinnerAdapter = GenreSpinnerAdapter()
-        platformSpinnerAdapter = PlatformSpinnerAdapter()
-
         _binding = FragmentFirst2Binding.inflate(inflater, container, false)
+
+        genreSpinnerAdapter = GenreSpinnerAdapter(_binding!!.genreSpinner)
+        platformSpinnerAdapter = PlatformSpinnerAdapter(_binding!!.platFormSpinner)
 
         if(!IsAdded.getIsAdded()) {
             _binding?.saveButton?.text = resources.getText(R.string.editGame)
@@ -69,15 +60,6 @@ class First2Fragment : Fragment() {
     @RequiresApi(Build.VERSION_CODES.S)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        GlobalScope.launch {
-            libraryServiceGameClient = LibraryServiceGameClientImpl()
-            var list = libraryServiceGameClient.getDetailsGame(User.getUserName())
-            GameList.setGameList(list)
-
-            genreSpinnerAdapter = GenreSpinnerAdapter()
-            platformSpinnerAdapter = PlatformSpinnerAdapter()
-        }
 
             binding.delete.isVisible = !IsAdded.getIsAdded()
 
