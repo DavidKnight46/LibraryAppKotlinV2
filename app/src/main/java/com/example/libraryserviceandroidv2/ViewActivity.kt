@@ -1,5 +1,6 @@
 package com.example.libraryserviceandroidv2
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Spinner
 import android.widget.Switch
@@ -7,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.libraryserviceandroidv2.libraryservice.activities.ActivitySelection
 import com.example.libraryserviceandroidv2.libraryservice.adapters.CardViewFilterAdapter
 import com.example.libraryserviceandroidv2.libraryservice.adapters.ViewGamesRecyclerAdapter
 import com.example.libraryserviceandroidv2.libraryservice.client.game.LibraryServiceGameClientImpl
@@ -19,11 +21,12 @@ import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
 import java.util.*
+import kotlin.streams.toList
 
 class ViewActivity : AppCompatActivity() {
 
     private lateinit var libraryServiceGameClientImpl: LibraryServiceGameClientImpl
-    private lateinit var gameList : List<GameModel>
+    private var gameList : List<GameModel> = mutableListOf()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,6 +35,8 @@ class ViewActivity : AppCompatActivity() {
 
         GlobalScope.launch {
             gameList = libraryServiceGameClientImpl.getDetailsGame(User.getUserName())
+
+            GameList.setGameList(gameList)
         }
 
         setContentView(R.layout.cardviewgameslayout)
@@ -42,21 +47,21 @@ class ViewActivity : AppCompatActivity() {
         preOrderSwitch.setOnClickListener {
             if(preOrderSwitch.isChecked){
                 IsPreOrder.setIsPreOrder(Integer(0))
-                foo()
+                foo(true)
             }
 
             lifecycleScope.launch {
-                foo()
+                foo(false)
             }
         }
 
         lifecycleScope.launch {
-            foo()
+            foo(false)
         }
 
     }
 
-    private fun foo() {
+    private fun foo(isChecked: Boolean) {
         var cardviewviewlayout = findViewById<RecyclerView>(R.id.cardviewviewlayout)
 
         val linearLayoutManager =
@@ -65,10 +70,24 @@ class ViewActivity : AppCompatActivity() {
         var findViewById = findViewById<Spinner>(R.id.viewFilterTypes)
         var isPreOrder = findViewById<Switch>(R.id.preOrderSwitch)
 
+        var selectedItem = findViewById<Spinner>(R.id.viewFilterResults)?.selectedItem
+
+        var toList: List<GameModel>
+
+        if(isChecked) {
+            toList = GameList.getGameList().stream()
+                .filter { e -> e.platform.contentEquals(selectedItem.toString()) }.toList()
+
+            println("smurf")
+        } else {
+            toList = GameList.getGameList()
+        }
+
+
         findViewById.onItemSelectedListener = CardViewFilterAdapter(
             findViewById(R.id.viewFilterResults),
             applicationContext,
-            gameList,
+            toList,
             cardviewviewlayout,
             linearLayoutManager,
             isPreOrder.isChecked

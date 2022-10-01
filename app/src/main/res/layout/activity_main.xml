@@ -30,12 +30,14 @@
         android:hint="@string/hintUserName"
         android:paddingHorizontal="@dimen/paddingHorizontal"
         app:layout_constraintTop_toBottomOf="@+id/mainImage"
+
         tools:ignore="MissingConstraints">
 
-        <com.google.android.material.textfield.TextInputEditText
+        <com.google.android.material.textfield.MaterialAutoCompleteTextView
             android:id="@+id/gameNameInput"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:padding="@dimen/topPadding"/>
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -50,11 +52,12 @@
         app:layout_constraintTop_toBottomOf="@id/gamename"
         tools:ignore="MissingConstraints">
 
-        <com.google.android.material.textfield.TextInputEditText
+        <com.google.android.material.textfield.MaterialAutoCompleteTextView
             android:id="@+id/passwordInput"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="textPassword" />
+            android:inputType="textPassword"
+            android:padding="@dimen/topPadding" />
 
     </com.google.android.material.textfield.TextInputLayout>
 

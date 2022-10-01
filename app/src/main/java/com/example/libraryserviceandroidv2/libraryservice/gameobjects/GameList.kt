@@ -3,9 +3,9 @@ package com.example.libraryserviceandroidv2.libraryservice.gameobjects
 import com.example.libraryserviceandroidv2.libraryservice.model.games.GameModel
 
 object GameList {
-    private var INSTANCE: ArrayList<GameModel>? = null
+    private var INSTANCE: List<GameModel>? = null
 
-    fun getGameList(): ArrayList<GameModel> {
+    fun getGameList(): List<GameModel> {
         if (INSTANCE == null) {
             INSTANCE = ArrayList()
         }
@@ -13,7 +13,7 @@ object GameList {
         return INSTANCE!!
     }
 
-    fun setGameList(gameList: ArrayList<GameModel>) {
+    fun setGameList(gameList: List<GameModel>) {
         if (INSTANCE == null) {
             INSTANCE = gameList
         }

@@ -1,5 +1,6 @@
 package com.example.libraryserviceandroidv2.libraryservice.fragments
 
+import android.content.Intent
 import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,6 +11,7 @@ import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import com.example.libraryserviceandroidv2.R
 import com.example.libraryserviceandroidv2.databinding.FragmentFirst2Binding
+import com.example.libraryserviceandroidv2.libraryservice.activities.ActivitySelection
 import com.example.libraryserviceandroidv2.libraryservice.adapters.GenreSpinnerAdapter
 import com.example.libraryserviceandroidv2.libraryservice.adapters.PlatformSpinnerAdapter
 import com.example.libraryserviceandroidv2.libraryservice.client.game.LibraryServiceGameClientImpl
@@ -25,7 +27,7 @@ class First2Fragment : Fragment() {
 
     private lateinit var genreSpinnerAdapter: GenreSpinnerAdapter
     private lateinit var platformSpinnerAdapter: PlatformSpinnerAdapter
-    private lateinit var myGameList: ArrayList<GameModel>
+    private lateinit var myGameList: List<GameModel>
 
     private var _binding: FragmentFirst2Binding? = null
 
@@ -93,8 +95,13 @@ class First2Fragment : Fragment() {
                     libraryServiceGameClientImpl.updateAnGame(gameModel)
                 }
 
-                binding.saveButton.isEnabled = true
             }
+
+            binding.saveButton.isEnabled = true
+
+            var intent = Intent(this.context, ActivitySelection::class.java)
+
+            startActivity(intent)
         }
 
     }

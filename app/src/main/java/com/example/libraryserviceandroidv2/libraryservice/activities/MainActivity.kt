@@ -13,6 +13,7 @@ import com.example.libraryserviceandroidv2.libraryservice.client.game.LibrarySer
 import com.example.libraryserviceandroidv2.libraryservice.client.user.LibraryServiceUserClientImpl
 import com.example.libraryserviceandroidv2.libraryservice.gameobjects.GameList
 import com.example.libraryserviceandroidv2.libraryservice.gameobjects.User
+import com.google.android.material.textfield.MaterialAutoCompleteTextView
 import com.google.android.material.textfield.TextInputEditText
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
@@ -43,8 +44,8 @@ class MainActivity : AppCompatActivity() {
 
     fun testClick(view: View) {
         GlobalScope.launch(Dispatchers.IO) {
-            var password = findViewById<TextInputEditText>(R.id.passwordInput).text.toString()
-            var username = findViewById<TextInputEditText>(R.id.gameNameInput).text.toString()
+            var password = findViewById<MaterialAutoCompleteTextView>(R.id.passwordInput).text.toString()
+            var username = findViewById<MaterialAutoCompleteTextView>(R.id.gameNameInput).text.toString()
 
             User.setUsername(username)
 
@@ -60,7 +61,7 @@ class MainActivity : AppCompatActivity() {
             }
 
 
-            var intent = Intent(applicationContext, viewActivity::class.java)
+            var intent = Intent(applicationContext, ActivitySelection::class.java)
 
             startActivity(intent)
         }

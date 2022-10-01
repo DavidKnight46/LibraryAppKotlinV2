@@ -2,5 +2,5 @@
     <dimen name="fab_margin">16dp</dimen>
     <dimen name="paddingHorizontal">10dp</dimen>
     <dimen name="paddingVertical">50dp</dimen>
-    <dimen name="topPadding">10dp</dimen>
+    <dimen name="topPadding">20dp</dimen>
 </resources>

@@ -14,7 +14,7 @@ import com.example.libraryserviceandroidv2.ViewActivity
 import com.example.libraryserviceandroidv2.databinding.ActivityViewBinding
 import com.example.libraryserviceandroidv2.libraryservice.gameobjects.IsAdded
 
-class viewActivity : AppCompatActivity() {
+class ActivitySelection : AppCompatActivity() {
 
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var binding: ActivityViewBinding
