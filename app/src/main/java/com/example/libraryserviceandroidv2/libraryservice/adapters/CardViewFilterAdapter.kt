@@ -10,6 +10,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.libraryserviceandroidv2.libraryservice.model.games.GameModel
 
 class CardViewFilterAdapter(
+    var platFormArray: Array<String>,
+    var genreArray: Array<String>,
     var resultSpinner: Spinner,
     var context: Context,
     var gameList: List<GameModel>,
@@ -22,7 +24,7 @@ class CardViewFilterAdapter(
 
         if (type.contentEquals("Genre")) {
             resultSpinner.adapter =
-                createAdapter(arrayOf("Action/Adventure", "RPG", "FPS", "Fighting", "RTS"))
+                createAdapter(genreArray)
 
             resultSpinner.onItemSelectedListener = ResultSpinnerItemSelectedAdapter(
                 gameList,
@@ -35,7 +37,7 @@ class CardViewFilterAdapter(
 
         } else if (type.contentEquals("Platform")) {
             resultSpinner.adapter =
-                createAdapter(arrayOf("PS1", "PS2", "PS3", "PS4", "PS5", "PSP", "PSVita"))
+                createAdapter(platFormArray)
 
             resultSpinner.onItemSelectedListener = ResultSpinnerItemSelectedAdapter(
                 gameList,
@@ -44,6 +46,18 @@ class CardViewFilterAdapter(
                 layoutManager,
                 1,
                 isPreOrder
+            )
+        } else if(type.equals("Pre-Ordered")){
+            resultSpinner.adapter =
+                createAdapter(arrayOf("Yes"))
+
+            resultSpinner.onItemSelectedListener = ResultSpinnerItemSelectedAdapter(
+                gameList,
+                recyclerView,
+                context,
+                layoutManager,
+                1,
+                true
             )
         }
     }

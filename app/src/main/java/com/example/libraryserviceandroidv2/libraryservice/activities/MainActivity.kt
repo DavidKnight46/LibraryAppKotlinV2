@@ -23,9 +23,9 @@ import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity() {
 
-    lateinit var loginButton: Button
-    lateinit var libraryServiceGameClient: LibraryServiceGameClientImpl
-    lateinit var libraryServiceUserClient: LibraryServiceUserClientImpl
+    private lateinit var loginButton: Button
+    private lateinit var libraryServiceGameClient: LibraryServiceGameClientImpl
+    private lateinit var libraryServiceUserClient: LibraryServiceUserClientImpl
     private lateinit var fbClient: FirebaseClient
 
     @SuppressLint("RestrictedApi")
@@ -59,7 +59,6 @@ class MainActivity : AppCompatActivity() {
             } else {
                 //TODO: not successfully
             }
-
 
             var intent = Intent(applicationContext, ActivitySelection::class.java)
 

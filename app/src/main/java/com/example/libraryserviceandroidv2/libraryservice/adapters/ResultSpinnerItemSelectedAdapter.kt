@@ -4,8 +4,8 @@ import android.content.Context
 import android.view.View
 import android.widget.AdapterView
 import androidx.recyclerview.widget.RecyclerView
-import com.example.libraryserviceandroidv2.libraryservice.gameobjects.GameList
 import com.example.libraryserviceandroidv2.libraryservice.model.games.GameModel
+import kotlin.streams.toList
 
 class ResultSpinnerItemSelectedAdapter(
     var gameList: List<GameModel>,
@@ -18,20 +18,20 @@ class ResultSpinnerItemSelectedAdapter(
     override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
         var str = parent?.getItemAtPosition(position) as String
 
-        if (isGenre == 0) {
-            var toList = gameList
+        if(str.equals("Yes")) {
+            handleList(gameList.stream()
+                .filter { e -> e.isPreOrdered == isPreOrder }
+                .toList())
+        } else if (isGenre == 0) {
+            handleList(gameList
                 .filter { e -> e.gameGenre.contentEquals(str) }
-                .filter { e -> e.isPreOrdered == isPreOrder }
-                .toList()
-
-            handleList(toList)
-        } else {
-            var toList = gameList
+                .toList())
+        } else if(isGenre == 1) {
+            handleList(gameList
                 .filter { e -> e.platform.contentEquals(str) }
-                .filter { e -> e.isPreOrdered == isPreOrder }
-                .toList()
-
-            handleList(toList)
+                .toList())
+        } else {
+            handleList(gameList)
         }
     }
 

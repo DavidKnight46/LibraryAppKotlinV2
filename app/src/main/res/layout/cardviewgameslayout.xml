@@ -10,16 +10,16 @@
         android:layout_height="match_parent"
         android:padding="@dimen/topPadding">
 
-        <Switch
-            android:id="@+id/preOrderSwitch"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/switchText"
-            android:textSize="20dp"
-            android:padding="@dimen/topPadding"
-            tools:ignore="MissingConstraints"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"/>
+<!--        <Switch-->
+<!--            android:id="@+id/preOrderSwitch"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="@string/switchText"-->
+<!--            android:textSize="20dp"-->
+<!--            android:padding="@dimen/topPadding"-->
+<!--            tools:ignore="MissingConstraints"-->
+<!--            app:layout_constraintLeft_toLeftOf="parent"-->
+<!--            app:layout_constraintRight_toRightOf="parent"/>-->
 
         <Spinner
             android:id="@+id/viewFilterTypes"
@@ -28,8 +28,7 @@
             android:entries="@array/filters"
             android:padding="@dimen/topPadding"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/preOrderSwitch"/>
+            app:layout_constraintRight_toRightOf="parent"/>
 
         <Spinner
             android:id="@+id/viewFilterResults"

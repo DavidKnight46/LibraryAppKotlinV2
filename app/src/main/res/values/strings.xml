@@ -52,5 +52,6 @@
         <item>Select One:</item>
         <item>Platform</item>
         <item>Genre</item>
+        <item>Pre-Ordered</item>
     </string-array>
 </resources>
