@@ -1,0 +1,3 @@
+package com.example.libraryserviceandroidv2.libraryservice.client.user
+
+class UserClientTest

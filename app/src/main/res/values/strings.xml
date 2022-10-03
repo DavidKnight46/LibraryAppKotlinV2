@@ -1,0 +1,57 @@
+<resources>
+    <string name="app_name">My Game Collection</string>
+    <string name="title_activity_main2">MainActivity2</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="title_activity_view">viewActivity</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">Main Menu</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+
+    <string name="addGame">Add Game</string>
+    <string name="viewGame">View Game</string>
+    <string name="editGame">Edit Game</string>
+    <string name="deleteGame">Delete Game</string>
+
+    <string name="loginButtonText">Login</string>
+    <string name="hintPassword">Password:</string>
+    <string name="hintUserName">Username:</string>
+    <string name="title_activity_add">AddActivity</string>
+    <string name="imageViewerContentDis">Game Image</string>
+
+    <string name="editTitle">Edit/Delete Game</string>
+    <string name="altLoginButtonText">Enter</string>
+
+    <string name="switchText">Show Pre-Orders</string>
+
+    <string-array name="platforms">
+        <item>PS1</item>
+        <item>PS2</item>
+        <item>PS3</item>
+        <item>PS4</item>
+        <item>PS5</item>
+        <item>PSP</item>
+        <item>PSVita</item>
+    </string-array>
+
+    <string-array name="genre">
+        <item>Action/Adventure</item>
+        <item>RPG</item>
+        <item>FPS</item>
+        <item>Fighting</item>
+        <item>RTS</item>
+    </string-array>
+
+    <string-array name="filters">
+        <item>Select One:</item>
+        <item>Platform</item>
+        <item>Genre</item>
+        <item>Pre-Ordered</item>
+    </string-array>
+</resources>
