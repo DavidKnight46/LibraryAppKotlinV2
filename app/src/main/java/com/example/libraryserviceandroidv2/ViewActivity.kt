@@ -41,8 +41,6 @@ class ViewActivity : AppCompatActivity() {
             setResultSpinners()
         }
 
-        println("smurf")
-
     }
 
     private fun setResultSpinners() {
