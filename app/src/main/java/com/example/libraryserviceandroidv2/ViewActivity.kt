@@ -25,6 +25,12 @@ class ViewActivity : AppCompatActivity() {
 
         libraryServiceGameClientImpl = LibraryServiceGameClientImpl()
 
+        var viewFilterSpinner = findViewById<Spinner>(R.id.viewFilterTypes)
+        var viewFilterTypes = findViewById<Spinner>(R.id.viewFilterResults)
+
+        viewFilterSpinner?.setSelection(1)
+        viewFilterTypes?.setSelection(1)
+
         GlobalScope.launch {
             GameList.setGameList(libraryServiceGameClientImpl.getDetailsGame(User.getUserName()))
         }

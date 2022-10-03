@@ -47,6 +47,9 @@ class First2Fragment : Fragment() {
 
         _binding = FragmentFirst2Binding.inflate(inflater, container, false)
 
+        _binding!!.genreSpinner.setSelection(1)
+        _binding!!.platFormSpinner.setSelection(1)
+
         genreSpinnerAdapter = GenreSpinnerAdapter(_binding!!.genreSpinner)
         platformSpinnerAdapter = PlatformSpinnerAdapter(_binding!!.platFormSpinner)
 

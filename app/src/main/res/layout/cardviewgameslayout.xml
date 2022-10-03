@@ -6,20 +6,10 @@
     android:layout_height="match_parent">
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cardViewConstraintLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:padding="@dimen/topPadding">
-
-<!--        <Switch-->
-<!--            android:id="@+id/preOrderSwitch"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:text="@string/switchText"-->
-<!--            android:textSize="20dp"-->
-<!--            android:padding="@dimen/topPadding"-->
-<!--            tools:ignore="MissingConstraints"-->
-<!--            app:layout_constraintLeft_toLeftOf="parent"-->
-<!--            app:layout_constraintRight_toRightOf="parent"/>-->
 
         <Spinner
             android:id="@+id/viewFilterTypes"
@@ -28,7 +18,7 @@
             android:entries="@array/filters"
             android:padding="@dimen/topPadding"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"/>
+            app:layout_constraintRight_toRightOf="parent" />
 
         <Spinner
             android:id="@+id/viewFilterResults"
@@ -37,16 +27,18 @@
             android:padding="@dimen/topPadding"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/viewFilterTypes"/>
+            app:layout_constraintTop_toBottomOf="@id/viewFilterTypes" />
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/cardviewviewlayout"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/viewFilterResults"
-            tools:ignore="MissingConstraints">
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/cardviewviewlayout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/viewFilterResults"
+                tools:ignore="MissingConstraints"
+                android:paddingBottom="130dp">
 
-        </androidx.recyclerview.widget.RecyclerView>
+            </androidx.recyclerview.widget.RecyclerView>
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </LinearLayout>
