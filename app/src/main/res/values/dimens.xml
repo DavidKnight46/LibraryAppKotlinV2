@@ -3,5 +3,5 @@
     <dimen name="paddingHorizontal">30dp</dimen>
     <dimen name="paddingVertical">50dp</dimen>
     <dimen name="marginsize">20dp</dimen>
-    <dimen name="numOfStars">4</dimen>
+    <dimen name="marginsize">20dp</dimen>
 </resources>
