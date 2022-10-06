@@ -11,6 +11,8 @@ import com.example.libraryserviceandroidv2.libraryservice.model.games.GameModel
 import com.google.android.material.textfield.TextInputEditText
 
 class EditGamesAdapter(
+    val genreList: List<String>,
+    val platformList: List<String>,
     val list: List<GameModel>,
     var fragment: FragmentContainerView
 ) : AdapterView.OnItemSelectedListener {
@@ -31,7 +33,6 @@ class EditGamesAdapter(
     }
 
     override fun onNothingSelected(parent: AdapterView<*>?) {
-        println("smurf")
     }
 
     private fun setTextInput(inputEdit: TextInputEditText, text: String) {
@@ -39,30 +40,23 @@ class EditGamesAdapter(
     }
 
     private fun setPlatformSpinnerInt(gameModel: GameModel): Int {
-        if (gameModel.platform == "PS5") {
-            return 4
-        } else if (gameModel.platform == "PS4") {
-            return 3
-        } else if (gameModel.platform == "PS3") {
-            return 2
-        } else if (gameModel.platform == "PS2") {
-            return 1
-        } else {
-            return 0
-        }
+        return createHashMapFromArray(platformList).getValue(gameModel.platform);
     }
 
     private fun setGenreSpinnerInt(gameModel: GameModel): Int {
-        if (gameModel.gameGenre == "RTS") {
-            return 4
-        } else if (gameModel.gameGenre == "Fighting") {
-            return 3
-        } else if (gameModel.gameGenre == "FPS") {
-            return 2
-        } else if (gameModel.gameGenre == "RPG") {
-            return 1
-        } else {
-            return 0
+        return createHashMapFromArray(genreList).getValue(gameModel.gameGenre)
+    }
+
+    private fun createHashMapFromArray(theList: List<String>): HashMap<String, Int> {
+        var hashMapOf = hashMapOf<String, Int>();
+
+        var i = 0
+
+        theList.forEach { e ->
+            hashMapOf.put(e, i)
+            i++
         }
+
+        return hashMapOf
     }
 }

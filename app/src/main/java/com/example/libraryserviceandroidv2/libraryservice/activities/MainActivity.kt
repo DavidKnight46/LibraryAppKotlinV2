@@ -44,8 +44,10 @@ class MainActivity : AppCompatActivity() {
 
     fun testClick(view: View) {
         GlobalScope.launch(Dispatchers.IO) {
-            var password = findViewById<MaterialAutoCompleteTextView>(R.id.passwordInput).text.toString()
-            var username = findViewById<MaterialAutoCompleteTextView>(R.id.gameNameInput).text.toString()
+            var password =
+                findViewById<MaterialAutoCompleteTextView>(R.id.passwordInput).text.toString()
+            var username =
+                findViewById<MaterialAutoCompleteTextView>(R.id.gameNameInput).text.toString()
 
             User.setUsername(username)
 

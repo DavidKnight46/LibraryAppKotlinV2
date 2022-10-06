@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">My Game Collection</string>
+    <string name="app_name">The G.Keep</string>
     <string name="title_activity_main2">MainActivity2</string>
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
@@ -21,7 +21,7 @@
 
     <string name="loginButtonText">Login</string>
     <string name="hintPassword">Password:</string>
-    <string name="hintUserName">Username:</string>
+    <string name="hintUserName">Email address:</string>
     <string name="title_activity_add">AddActivity</string>
     <string name="imageViewerContentDis">Game Image</string>
 
@@ -38,6 +38,10 @@
         <item>PS5</item>
         <item>PSP</item>
         <item>PSVita</item>
+        <item>Nintendo Switch</item>
+        <item>PC</item>
+        <item>XBoxSeriesX</item>
+        <item>XBoxSeriesS</item>
     </string-array>
 
     <string-array name="genre">
@@ -46,6 +50,9 @@
         <item>FPS</item>
         <item>Fighting</item>
         <item>RTS</item>
+        <item>JRPG</item>
+        <item>Racing</item>
+        <item>Simulation</item>
     </string-array>
 
     <string-array name="filters">

@@ -5,12 +5,8 @@ import android.os.Bundle
 import android.widget.ArrayAdapter
 import android.widget.Spinner
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.get
-import androidx.fragment.app.FragmentContainerView
 import com.example.libraryserviceandroidv2.libraryservice.adapters.EditGamesAdapter
 import com.example.libraryserviceandroidv2.libraryservice.client.game.LibraryServiceGameClientImpl
-import com.example.libraryserviceandroidv2.libraryservice.client.user.LibraryServiceUserClientImpl
-import com.example.libraryserviceandroidv2.libraryservice.gameobjects.GameList
 import com.example.libraryserviceandroidv2.libraryservice.gameobjects.IsAdded
 import com.example.libraryserviceandroidv2.libraryservice.gameobjects.User
 import com.example.libraryserviceandroidv2.libraryservice.model.games.GameModel
@@ -42,7 +38,10 @@ class EditActivity : AppCompatActivity() {
                 findViewById.adapter =
                     ArrayAdapter(applicationContext, android.R.layout.simple_spinner_item, gameList)
 
-                findViewById.onItemSelectedListener = EditGamesAdapter(gameList,
+                var platformArray = resources.getStringArray(R.array.platforms)
+                var genreArray = resources.getStringArray(R.array.genre)
+
+                findViewById.onItemSelectedListener = EditGamesAdapter(genreArray.asList(), platformArray.asList(), gameList,
                     findViewById(R.id.fragmentViewContainer))
             }
         }

@@ -30,7 +30,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="textEmailAddress"
-                    android:layout_marginTop="@dimen/topPadding" />
+                    android:layout_marginTop="@dimen/marginsize" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -39,10 +39,10 @@
                 style="@style/activityStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="@dimen/topPadding"
-                android:layout_marginTop="25dp"
+                android:layout_marginHorizontal="@dimen/marginsize"
+                android:layout_marginTop="@dimen/marginsize"
+                android:paddingHorizontal="@dimen/paddingHorizontal"
                 android:entries="@array/platforms"
-                android:paddingHorizontal="100dp"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/gamename" />
@@ -52,10 +52,10 @@
                 style="@style/activityStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="@dimen/topPadding"
-                android:layout_marginTop="@dimen/topPadding"
+                android:layout_marginHorizontal="@dimen/marginsize"
+                android:layout_marginTop="@dimen/marginsize"
+                android:paddingHorizontal="@dimen/paddingHorizontal"
                 android:entries="@array/genre"
-                android:paddingHorizontal="100dp"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/platFormSpinner" />
@@ -64,9 +64,8 @@
                 android:id="@+id/ratingBar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/topPadding"
-                android:numStars="5"
-                android:paddingHorizontal="5dp"
+                android:layout_marginTop="@dimen/marginsize"
+                android:numStars="@integer/numberOfStars"
                 android:rating="5"
                 android:stepSize="1"
                 app:layout_constraintLeft_toLeftOf="parent"
@@ -85,7 +84,7 @@
                     android:id="@+id/releaseDateInput"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/topPadding"
+                    android:layout_marginTop="@dimen/marginsize"
                     android:hint="Release Date (YYYY-mm-dd)"
                     android:inputType="date" />
 
@@ -103,7 +102,7 @@
                     android:id="@+id/imageUrlInput"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/topPadding"
+                    android:layout_marginTop="@dimen/marginsize"
                     android:hint="Image URI:"
                     android:inputType="textUri" />
 
@@ -126,7 +125,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/switchText"
                 android:textSize="20dp"
-                android:padding="@dimen/topPadding"
+                android:padding="@dimen/marginsize"
                 tools:ignore="MissingConstraints,UseSwitchCompatOrMaterialXml"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"

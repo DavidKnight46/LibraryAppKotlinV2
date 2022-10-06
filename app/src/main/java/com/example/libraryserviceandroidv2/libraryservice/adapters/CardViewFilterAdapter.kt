@@ -47,7 +47,7 @@ class CardViewFilterAdapter(
                 1,
                 isPreOrder
             )
-        } else if(type.equals("Pre-Ordered")){
+        } else if (type.equals("Pre-Ordered")) {
             resultSpinner.adapter =
                 createAdapter(arrayOf("Yes"))
 

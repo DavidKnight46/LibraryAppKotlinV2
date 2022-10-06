@@ -18,7 +18,7 @@ class ResultSpinnerItemSelectedAdapter(
     override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
         var str = parent?.getItemAtPosition(position) as String
 
-        if(str.equals("Yes")) {
+        if (str.equals("Yes")) {
             handleList(gameList.stream()
                 .filter { e -> e.isPreOrdered == isPreOrder }
                 .toList())
@@ -26,7 +26,7 @@ class ResultSpinnerItemSelectedAdapter(
             handleList(gameList
                 .filter { e -> e.gameGenre.contentEquals(str) }
                 .toList())
-        } else if(isGenre == 1) {
+        } else if (isGenre == 1) {
             handleList(gameList
                 .filter { e -> e.platform.contentEquals(str) }
                 .toList())
