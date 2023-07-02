@@ -28,6 +28,8 @@
     <string name="editTitle">Edit/Delete Game</string>
     <string name="altLoginButtonText">Enter</string>
 
+    <string name="modeSwitchText">On-line</string>
+
     <string name="switchText">Show Pre-Orders</string>
 
     <string-array name="platforms">

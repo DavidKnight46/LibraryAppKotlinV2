@@ -7,13 +7,12 @@ import android.view.View
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
-import com.example.libraryserviceandroidv2.R
+import com.example.libraryappv3.R
 import com.example.libraryserviceandroidv2.libraryservice.client.firebase.FirebaseClient
 import com.example.libraryserviceandroidv2.libraryservice.client.game.LibraryServiceGameClientImpl
 import com.example.libraryserviceandroidv2.libraryservice.client.user.LibraryServiceUserClientImpl
 import com.example.libraryserviceandroidv2.libraryservice.gameobjects.GameList
 import com.example.libraryserviceandroidv2.libraryservice.gameobjects.User
-import com.google.android.material.textfield.MaterialAutoCompleteTextView
 import com.google.android.material.textfield.TextInputEditText
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
@@ -27,6 +26,8 @@ class MainActivity : AppCompatActivity() {
     private lateinit var libraryServiceGameClient: LibraryServiceGameClientImpl
     private lateinit var libraryServiceUserClient: LibraryServiceUserClientImpl
     private lateinit var fbClient: FirebaseClient
+    private lateinit var textInputEditTextPassword: TextInputEditText
+    private lateinit var textInputEditTextUser: TextInputEditText
 
     @SuppressLint("RestrictedApi")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -36,8 +37,11 @@ class MainActivity : AppCompatActivity() {
         loginButton = findViewById(R.id.loginButton)
         loginButton.setText(R.string.altLoginButtonText)
 
-        findViewById<TextInputEditText>(R.id.passwordInput).isVisible = true
-        findViewById<TextInputEditText>(R.id.gameNameInput).isVisible = true
+        textInputEditTextPassword = findViewById(R.id.passwordInput)
+        textInputEditTextPassword.isVisible = true
+
+        textInputEditTextUser = findViewById(R.id.gameNameInput)
+        textInputEditTextUser.isVisible = true
 
         libraryServiceUserClient = LibraryServiceUserClientImpl()
     }
@@ -45,9 +49,9 @@ class MainActivity : AppCompatActivity() {
     fun testClick(view: View) {
         GlobalScope.launch(Dispatchers.IO) {
             var password =
-                findViewById<MaterialAutoCompleteTextView>(R.id.passwordInput).text.toString()
+                textInputEditTextPassword.text.toString()
             var username =
-                findViewById<MaterialAutoCompleteTextView>(R.id.gameNameInput).text.toString()
+                textInputEditTextUser.text.toString()
 
             User.setUsername(username)
 
@@ -66,6 +70,12 @@ class MainActivity : AppCompatActivity() {
 
             startActivity(intent)
         }
+    }
+
+    fun onSwitchMode(view: View){
+        textInputEditTextPassword.isEnabled = false
+
+        textInputEditTextUser.isEnabled = false
     }
 
 }
